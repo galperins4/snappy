@@ -83,7 +83,7 @@ def rollback(b):
      run(["yarn","rollback:"+db,"-b",b])
      run(["pm2","start","ark-core-relay","ark-core-forger"])
      
-def delete()
+def delete():
      # build function to remove snapshots with blocks past rollback value
      pass
      
