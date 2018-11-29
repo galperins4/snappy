@@ -1,7 +1,7 @@
 import json
 import os
 from pathlib import Path
-from subprocess import call
+from subprocess import run
 import sys
 
 
@@ -51,36 +51,36 @@ def purge_snap():
           l,f = get_folders()
           print("Purging Snapshot",f)
           os.chdir(snapshots)
-          call(["rm","-rf", f])
+          run(["rm","-rf", f])
 
 
 def create_snap():
      os.chdir(cli)
-     call(["yarn","create:"+db])
+     run(["yarn","create:"+db])
 
      
 def import_snap(s):
      os.chdir(cli)
-     call(["pm2","stop","all"])
-     call(["yarn","import:"+db,"-b",s,"--truncate"])
-     call(["pm2","start","all"])
+     run(["pm2","stop","all"])
+     run(["yarn","import:"+db,"-b",s,"--truncate"])
+     run(["pm2","start","all"])
 
 
 def verify_snap(v):
      os.chdir(cli)
-     call(["yarn","verify:"+db,"--blocks",v])
+     run(["yarn","verify:"+db,"--blocks",v])
 
 
 def append_snap(c):
      os.chdir(cli)
-     call(["yarn","create:"+db,"--blocks",c])
+     run(["yarn","create:"+db,"--blocks",c])
 
 
 def rollback(b):
      os.chdir(cli)
-     call(["pm2","stop","all"])
-     call(["yarn","rollback:"+db,"-b",b])
-     call(["pm2","start","all"])
+     run(["pm2","stop","all"])
+     run(["yarn","rollback:"+db,"-b",b])
+     run(["pm2","start","all"])
      
 
 def menu():
