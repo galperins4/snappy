@@ -1,7 +1,8 @@
 from subprocess import call
 import os
 
-cli='/home/galp/ark-core/packages/core-snapshots-cli'
+cli='/home/galp/ark-core/packages/core-snapshots-cli
+'
 snapshots='/home/galp/.ark/snapshots/devnet'
 
 def list_folders():
@@ -28,7 +29,7 @@ def first_snap():
      os.chdir(cli)
      call(["yarn","create:devnet"])
 
-
+     
 def import_snap(s):
      os.chdir(cli)
      call(["pm2","stop","all"])
@@ -46,6 +47,11 @@ def append_snap(c):
      call(["yarn","create:devnet","--blocks",c])
 
 
+def rollback(b):
+     os.chdir(cli)
+     call(["yarn","rollback:devnet","-b",b])
+     
+     
 if __name__ == "__main__":
      l,f = get_folder()
      import_snap(l)
