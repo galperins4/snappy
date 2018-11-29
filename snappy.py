@@ -80,7 +80,7 @@ def menu(a=None):
      
 if __name__ == "__main__":
      db = get_database()
-     cli, snaphots = get_vars()
+     cli, snaphots = get_paths()
      print(cli,snapshots)
      quit()
      menu()
