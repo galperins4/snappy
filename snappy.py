@@ -91,13 +91,13 @@ def menu():
           elif option=="--view":
                view_snap()
           elif option=="--create":
-               pass
+               ceeate_snap()
           elif option=="--append":
-               pass
+               append_snap()
           elif option=="--import":
-               pass
+               import_snap()
           elif option=="--rollback":
-               pass
+               rollback()
           else:
                print("Unrecognized, try --help flag for options")
                
