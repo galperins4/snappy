@@ -2,6 +2,7 @@ import json
 import os
 from pathlib import Path
 from subprocess import call
+import sys
 
 
 cli_path='/ark-core/packages/core-snapshots-cli'
@@ -73,8 +74,10 @@ def rollback(b):
      call(["yarn","rollback:"+db,"-b",b])
      call(["pm2","start","all"])
      
-def menu(a=None):
-     if a == None:
+def menu():
+     try:
+          print(sys.argv[1])
+     except:
           print("No Arguments Passed")
 
      
