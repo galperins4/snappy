@@ -116,7 +116,7 @@ def menu():
                
                
           elif option=="--rollback":
-               block = input("What block would you like to rollback to?)
+               block = input("What block would you like to rollback to?")
                rollback(block)
           else:
                print("Unrecognized, try --help flag for options")
