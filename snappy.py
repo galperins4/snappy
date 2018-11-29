@@ -73,18 +73,17 @@ def rollback(b):
      call(["yarn","rollback:"+db,"-b",b])
      call(["pm2","start","all"])
      
-def menu(a):
-     print("End of Program")
+def menu(a=None):
+     if a == None:
+          print("No Arguments Passed")
 
      
 if __name__ == "__main__":
      db = get_database()
      cli, snaphots = get_vars()
      print(cli,snapshots)
-     
-     
      quit()
-     
+     menu()
      
      
      '''
