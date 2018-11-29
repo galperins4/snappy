@@ -91,7 +91,7 @@ def menu():
           elif option=="--view":
                view_snap()
           elif option=="--create":
-               ceeate_snap()
+               create_snap()
                l,f = get_folder()
                verify_snap(l)
                purge_snap()
