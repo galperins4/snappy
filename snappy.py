@@ -1,7 +1,7 @@
 import json
 import os
 from pathlib import Path
-from subprocess import run, call
+from subprocess import run
 import sys
 
 
@@ -80,7 +80,7 @@ def append_snap(c):
 def rollback(b):
      os.chdir(cli)
      run(["pm2","stop","ark-core-relay","ark-core-forger"])
-     call(["yarn","rollback:"+db,"-b",b])
+     run(["yarn","rollback:"+db,"-b",b])
      run(["pm2","start","ark-core-relay","ark-core-forger"])
      
 
