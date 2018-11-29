@@ -30,7 +30,10 @@ def list_folders():
 
 
 def view_snap():
-     pass
+     dirlist = list_folders()
+     print("Available Snapshots:")
+     for i in dirlist:
+          print(i)
 
 def get_folders():
      dirlist = list_folders()
