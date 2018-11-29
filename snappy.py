@@ -86,12 +86,6 @@ def delete_snap(f):
      os.chdir(snapshots)
      run(["rm","-rf", f])
      
-     
-     # build function to remove snapshots with blocks past rollback value
-     
-     
-     pass
-     
 
 def menu():
      if len(sys.argv) == 1:
