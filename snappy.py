@@ -106,7 +106,7 @@ def menu():
           elif option=="--import":
                snap_opt = sorted(list_folders())
                tmp_menu = {}
-               for counter, i in enumurate(snap_opt):
+               for counter, i in enumerate(snap_opt):
                     tmp_menu[counter+1]=i
                     print(counter+1, i)
                
