@@ -90,14 +90,15 @@ def menu():
                menu_options()
                
 
-def manu_options():
+def menu_options():
      print("--help","shows available menu options")
      print("--view","shows available snapshots to use")
      print("--create","creates a new snapshot")
      print("--append","appends to the most recent snapshot")
      print("--import --snapshot","imports a specific snapshot")
      print("--rollback --block","shows available menu options")
-     
+   
+
 if __name__ == "__main__":
      db = get_database()
      cli, snapshots = get_paths()
