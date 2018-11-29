@@ -7,7 +7,7 @@ git clone https://github.com/galperins4/snappy
 ```
 
 ## Usage
-Run the script with the appropriate command as follows: 'python3 snappy.py --flag'. For available options use the '--help' flag
+Run the script with the appropriate command as follows: `python3 snappy.py --flag`. For available options use the `--help` flag
 
 ## To Do
 
