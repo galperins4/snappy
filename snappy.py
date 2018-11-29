@@ -3,30 +3,37 @@ from pathlib import Path
 from subprocess import call
 
 
-#cli_path='/ark-core/packages/core-snapshots-cli'
-#snap_path='/.ark/snapshots/devnet'
-#env_path='/.ark'
-
+cli_path='/ark-core/packages/core-snapshots-cli'
+snap_path='/.ark/snapshots/'
+env_path='/.ark/config'
 
 def get_paths():
      home = str(Path.home())
      c_path = home+cli_path
-     s_path = home+snap_path
-     e_path = home_e_path
+     s_path = home+snap_path+db
      
-     return c_path, s_path, e_path
+     return c_path, s_path
 
 
+def get_database():
+     home = str(Path.home()
+     env = home+env_path
+     with open(env + 'network.json') as network_file:
+          network = json.load(network_file)
+
+     return network
+                
 def list_folders():
      return [item for item in os.listdir(snapshots) if os.path.isdir(os.path.join(snapshots, item))]
 
 
-def get_folder():
+def get_folders():
      dirlist = list_folders()
      newlist = [int(i[2:]) for i in dirlist]
      last = "1-"+ str(max(newlist))
      first = "1-"+str(min(newlist))
      return last, first
+
 
 def purge_snap():
      dirlist = list_folders()
@@ -37,7 +44,7 @@ def purge_snap():
           call(["rm","-rf", f])
 
 
-def first_snap():
+def create_snap():
      os.chdir(cli)
      call(["yarn","create:devnet"])
 
@@ -69,8 +76,11 @@ def menu(a):
 
      
 if __name__ == "__main__":
-     cli, snap, env = get_vars()
      db = get_database()
+     print(db)
+     quit()
+     cli, snap = get_vars()
+     
      
      
      quit()
