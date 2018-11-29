@@ -46,7 +46,7 @@ def get_folders():
      return last, first
 
 
-def purge_snap():
+def purge_check():
      dirlist = list_folders()
      if len(dirlist) > 5:
           l,f = get_folders()
@@ -83,8 +83,15 @@ def rollback(b):
      run(["yarn","rollback:"+db,"-b",b])
      run(["pm2","start","ark-core-relay","ark-core-forger"])
      
-def delete():
+def delete_snap(f):
+     print("Purging Snapshot",f)
+     os.chdir(snapshots)
+     run(["rm","-rf", f])
+     
+     
      # build function to remove snapshots with blocks past rollback value
+     
+     
      pass
      
 
@@ -101,13 +108,13 @@ def menu():
                create_snap()
                l,f = get_folders()
                verify_snap(l)
-               purge_snap()
+               purge_check()
           elif option=="--append":
                l,f = get_folders()
                append_snap(l)
                l,f = get_folders()
                verify_snap(l)
-               purge_snap()
+               purge_check()
           elif option=="--import":
                snap_opt = sorted(list_folders())
                tmp_menu = {}
