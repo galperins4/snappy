@@ -18,7 +18,7 @@ def get_paths():
 def get_database():
      home = str(Path.home())
      env = home+env_path
-     with open(env + 'network.json') as network_file:
+     with open(env + '/network.json') as network_file:
           network = json.load(network_file)
 
      return network
