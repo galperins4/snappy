@@ -61,9 +61,9 @@ def create_snap():
      
 def import_snap(s):
      os.chdir(cli)
-     run(["pm2","stop","all"])
+     run(["pm2","stop","ark-core-relay", "ark-core-forger"])
      run(["yarn","import:"+db,"-b",s,"--truncate"])
-     run(["pm2","start","all"])
+     run(["pm2","start","ark-core-relay","ark-core-forger"])
 
 
 def verify_snap(v):
@@ -78,9 +78,9 @@ def append_snap(c):
 
 def rollback(b):
      os.chdir(cli)
-     run(["pm2","stop","all"])
+     run(["pm2","stop","ark-core-relay","ark-core-forger"])
      run(["yarn","rollback:"+db,"-b",b])
-     run(["pm2","start","all"])
+     run(["pm2","start","ark-core-relay","ark-core-forger"])
      
 
 def menu():
