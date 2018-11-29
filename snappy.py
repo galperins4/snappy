@@ -26,7 +26,9 @@ def get_database():
      return network['name']
                 
 def list_folders():
-     return [item for item in os.listdir(snapshots) if os.path.isdir(os.path.join(snapshots, item))]
+     folders = [item for item in os.listdir(snapshots) if os.path.isdir(os.path.join(snapshots, item))]
+     folders.remove('rollbackTransactions')
+     return folders
 
 
 def view_snap():
