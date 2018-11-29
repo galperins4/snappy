@@ -29,13 +29,13 @@ def list_folders():
      folders = [item for item in os.listdir(snapshots) if os.path.isdir(os.path.join(snapshots, item))]
      if 'rollbackTransactions' in folders:
           folders.remove('rollbackTransactions')
-     return folders
+     return sorted(folders)
 
 
 def view_snap():
      dirlist = list_folders()
      print("Available Snapshots:")
-     for i in sorted(dirlist):
+     for i in dirlist:
           print(i)
 
 def get_folders():
@@ -108,7 +108,7 @@ def menu():
                verify_snap(l)
                purge_check()
           elif option=="--import":
-               snap_opt = sorted(list_folders())
+               snap_opt = list_folders()
                tmp_menu = {}
                for counter, i in enumerate(snap_opt):
                     tmp_menu[counter+1]=i
