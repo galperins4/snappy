@@ -83,7 +83,7 @@ def rollback(b):
 
 def menu():
      if len(sys.argv) == 1:
-          print("No Arguments Passed")
+          print("No Arguments Passed, try --help flag for options")
      else:
           option = sys.argv[1]
           if option=="--help":
@@ -92,12 +92,32 @@ def menu():
                view_snap()
           elif option=="--create":
                ceeate_snap()
+               l,f = get_folder()
+               verify_snap(l)
+               purge_snap()
           elif option=="--append":
-               append_snap()
+               l,f = get_folder()
+               append_snap(l)
+               l,f = get_folder()
+               verify_snap(l)
+               purge_snap()
           elif option=="--import":
-               import_snap()
+               snap_opt = list_folders()
+               tmp_menu = {}
+               for counter, i in enumurate(snap_opt):
+                    tmp_menu[counter+1]=i
+                    print(counter+1, i)
+               
+               snap_select = int(input("Select one of the options noted above"))
+               if snap_select in tmp_menu.keys():
+                    import_snap(tmp_menu[snap_select])
+               else:
+                    "Something went wrong, please try again"
+               
+               
           elif option=="--rollback":
-               rollback()
+               block = input("What block would you like to rollback to?)
+               rollback(block)
           else:
                print("Unrecognized, try --help flag for options")
                
@@ -115,11 +135,3 @@ if __name__ == "__main__":
      db = get_database()
      cli, snapshots = get_paths()
      menu()
-     
-     
-     '''
-     l,f = get_folder()
-     import_snap(l)
-     '''
-
-
