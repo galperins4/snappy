@@ -88,7 +88,7 @@ def menu():
           option = sys.argv[1]
           if option == "--help":
                menu_options()
-          elif option =="--view"
+          elif option =="--view":
                view_snap()
                
 
