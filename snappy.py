@@ -75,12 +75,11 @@ def rollback(b):
      call(["pm2","start","all"])
      
 def menu():
-     print(len(sys.argv))
-     
-     try:
-          print(sys.argv[1])
-     except:
+     if len(sys.argv) == 1:
           print("No Arguments Passed")
+     else:
+          menu_option = sys.argv[1]
+          print(menu_option)
 
      
 if __name__ == "__main__":
