@@ -75,6 +75,8 @@ def rollback(b):
      call(["pm2","start","all"])
      
 def menu():
+     print(len(sys.argv))
+     
      try:
           print(sys.argv[1])
      except:
