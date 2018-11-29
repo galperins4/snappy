@@ -32,7 +32,7 @@ def list_folders():
 def view_snap():
      dirlist = list_folders()
      print("Available Snapshots:")
-     for i in dirlist:
+     for i in sorted(dirlist):
           print(i)
 
 def get_folders():
@@ -102,7 +102,7 @@ def menu():
                verify_snap(l)
                purge_snap()
           elif option=="--import":
-               snap_opt = list_folders()
+               snap_opt = sorted(list_folders())
                tmp_menu = {}
                for counter, i in enumurate(snap_opt):
                     tmp_menu[counter+1]=i
