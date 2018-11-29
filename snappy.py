@@ -29,6 +29,9 @@ def list_folders():
      return [item for item in os.listdir(snapshots) if os.path.isdir(os.path.join(snapshots, item))]
 
 
+def view_snap():
+     pass
+
 def get_folders():
      dirlist = list_folders()
      newlist = [int(i[2:]) for i in dirlist]
@@ -74,13 +77,23 @@ def rollback(b):
      call(["yarn","rollback:"+db,"-b",b])
      call(["pm2","start","all"])
      
+
 def menu():
      if len(sys.argv) == 1:
           print("No Arguments Passed")
      else:
-          menu_option = sys.argv[1]
-          print(menu_option)
+          option = sys.argv[1]
+          if option == "--help":
+               menu_options()
+               
 
+def manu_options():
+     print("--help","shows available menu options")
+     print("--view","shows available snapshots to use")
+     print("--create","creates a new snapshot")
+     print("--append","appends to the most recent snapshot")
+     print("--import --snapshot","imports a specific snapshot")
+     print("--rollback --block","shows available menu options")
      
 if __name__ == "__main__":
      db = get_database()
