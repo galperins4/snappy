@@ -109,14 +109,12 @@ def menu():
                for counter, i in enumerate(snap_opt):
                     tmp_menu[counter+1]=i
                     print(counter+1,"-", i)
-               print(tmp_menu.keys())
-               quit()
                
                snap_select = int(input("Select one of the options noted above "))
                if snap_select in tmp_menu.keys():
                     import_snap(tmp_menu[snap_select])
                else:
-                    "Something went wrong, please try again"
+                    print("Something went wrong, please try again")
                
                
           elif option=="--rollback":
