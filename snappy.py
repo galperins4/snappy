@@ -27,7 +27,8 @@ def get_database():
                 
 def list_folders():
      folders = [item for item in os.listdir(snapshots) if os.path.isdir(os.path.join(snapshots, item))]
-     folders.remove('rollbackTransactions')
+     if 'rollbackTransactions' in folders:
+          folders.remove('rollbackTransactions')
      return folders
 
 
