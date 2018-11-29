@@ -46,7 +46,7 @@ def get_folders():
 def purge_snap():
      dirlist = list_folders()
      if len(dirlist) > 5:
-          l,f = get_folder()
+          l,f = get_folders()
           print("Purging Snapshot",f)
           os.chdir(snapshots)
           call(["rm","-rf", f])
