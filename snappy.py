@@ -108,7 +108,7 @@ def menu():
                     tmp_menu[counter+1]=i
                     print(counter+1, i)
                
-               snap_select = int(input("Select one of the options noted above"))
+               snap_select = int(input("Select one of the options noted above "))
                if snap_select in tmp_menu.keys():
                     import_snap(tmp_menu[snap_select])
                else:
@@ -116,7 +116,7 @@ def menu():
                
                
           elif option=="--rollback":
-               block = input("What block would you like to rollback to?")
+               block = input("What block would you like to rollback to? ")
                rollback(block)
           else:
                print("Unrecognized, try --help flag for options")
