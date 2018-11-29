@@ -92,13 +92,13 @@ def menu():
                view_snap()
           elif option=="--create":
                create_snap()
-               l,f = get_folder()
+               l,f = get_folders()
                verify_snap(l)
                purge_snap()
           elif option=="--append":
-               l,f = get_folder()
+               l,f = get_folders()
                append_snap(l)
-               l,f = get_folder()
+               l,f = get_folders()
                verify_snap(l)
                purge_snap()
           elif option=="--import":
