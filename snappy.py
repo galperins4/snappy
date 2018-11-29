@@ -81,6 +81,14 @@ def rollback(b):
      run(["yarn","rollback:"+db,"-b",b])
      run(["pm2","start","ark-core-relay","ark-core-forger"])
      
+     #delete snaps with blocks beyond rollback value
+     dirlist = list_folders()
+     newlist = [int(i[2:]) for i in dirlist]
+     for i in newlist:
+          if i > int(b):
+               delete_snap("1-"+str(i))
+     
+
 def delete_snap(f):
      print("Purging Snapshot",f)
      os.chdir(snapshots)
