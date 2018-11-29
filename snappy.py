@@ -1,9 +1,21 @@
-from subprocess import call
 import os
+from pathlib import Path
+from subprocess import call
 
-cli='/home/galp/ark-core/packages/core-snapshots-cli
-'
-snapshots='/home/galp/.ark/snapshots/devnet'
+
+#cli_path='/ark-core/packages/core-snapshots-cli'
+#snap_path='/.ark/snapshots/devnet'
+#env_path='/.ark'
+
+
+def get_paths():
+     home = str(Path.home())
+     c_path = home+cli_path
+     s_path = home+snap_path
+     e_path = home_e_path
+     
+     return c_path, s_path, e_path
+
 
 def list_folders():
      return [item for item in os.listdir(snapshots) if os.path.isdir(os.path.join(snapshots, item))]
@@ -52,12 +64,22 @@ def rollback(b):
      call(["yarn","rollback:devnet","-b",b])
      
      
+def menu(a):
+     print("End of Program")
+
+     
 if __name__ == "__main__":
+     cli, snap, env = get_vars()
+     db = get_database()
+     
+     
+     quit()
+     
+     
+     
+     '''
      l,f = get_folder()
      import_snap(l)
+     '''
 
 
-
-     #append_snap(l)
-     #l,f = get_folder()
-     #verify_snap(l)
