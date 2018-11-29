@@ -47,30 +47,31 @@ def purge_snap():
 
 def create_snap():
      os.chdir(cli)
-     call(["yarn","create:devnet"])
+     call(["yarn","create:"+db])
 
      
 def import_snap(s):
      os.chdir(cli)
      call(["pm2","stop","all"])
-     call(["yarn","import:devnet","-b",s,"--truncate"])
+     call(["yarn","import:"+db,"-b",s,"--truncate"])
      call(["pm2","start","all"])
 
 
 def verify_snap(v):
      os.chdir(cli)
-     call(["yarn","verify:devnet","--blocks",v])
+     call(["yarn","verify:"+db,"--blocks",v])
 
 
 def append_snap(c):
      os.chdir(cli)
-     call(["yarn","create:devnet","--blocks",c])
+     call(["yarn","create:"+db,"--blocks",c])
 
 
 def rollback(b):
      os.chdir(cli)
-     call(["yarn","rollback:devnet","-b",b])
-     
+     call(["pm2","stop","all"])
+     call(["yarn","rollback:"+db,"-b",b])
+     call(["pm2","start","all"])
      
 def menu(a):
      print("End of Program")
@@ -78,10 +79,8 @@ def menu(a):
      
 if __name__ == "__main__":
      db = get_database()
-     print(db)
-     quit()
-     cli, snap = get_vars()
-     
+     cli, snaphots = get_vars()
+     print(cli,snapshots)
      
      
      quit()
