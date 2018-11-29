@@ -86,10 +86,18 @@ def menu():
           print("No Arguments Passed")
      else:
           option = sys.argv[1]
-          if option == "--help":
+          if option=="--help":
                menu_options()
-          elif option =="--view":
+          elif option=="--view":
                view_snap()
+          elif option=="--create":
+               pass
+          elif option=="--append":
+               pass
+          elif option=="--import":
+               pass
+          elif option=="--rollback":
+               pass
           else:
                print("Unrecognized, try --help flag for options")
                
@@ -99,8 +107,8 @@ def menu_options():
      print("--view","shows available snapshots to use")
      print("--create","creates a new snapshot")
      print("--append","appends to the most recent snapshot")
-     print("--import --snapshot","imports a specific snapshot")
-     print("--rollback --block","shows available menu options")
+     print("--import","imports a specific snapshot")
+     print("--rollback","rollback database to specific block")
    
 
 if __name__ == "__main__":
