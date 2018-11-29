@@ -22,7 +22,7 @@ def get_database():
      with open(env + '/network.json') as network_file:
           network = json.load(network_file)
 
-     return network
+     return network['name']
                 
 def list_folders():
      return [item for item in os.listdir(snapshots) if os.path.isdir(os.path.join(snapshots, item))]
