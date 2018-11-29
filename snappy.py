@@ -90,6 +90,8 @@ def menu():
                menu_options()
           elif option =="--view":
                view_snap()
+          else:
+               print("Unrecognized, try --help flag for options")
                
 
 def menu_options():
