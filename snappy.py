@@ -26,7 +26,12 @@ def get_database():
      return network['name']
                 
 def list_folders():
-     folders = [item for item in os.listdir(snapshots) if os.path.isdir(os.path.join(snapshots, item))]
+     try:
+          folders = [item for item in os.listdir(snapshots) if os.path.isdir(os.path.join(snapshots, item))]
+     except:
+          print("Oops - looks like no snapshots have been taking. Try --create flag to get started")
+          quit()
+    
      if 'rollbackTransactions' in folders:
           folders.remove('rollbackTransactions')
      return sorted(folders)
