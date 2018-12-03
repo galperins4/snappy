@@ -24,7 +24,16 @@ def get_database():
           network = json.load(network_file)
 
      return network['name']
-                
+
+
+def start_proc():
+     run(["pm2","stop","ark-core-relay", "ark-core-forger"])
+     
+     
+def stop_proc():
+     run(["pm2","start","ark-core-relay","ark-core-forger"])
+     
+
 def list_folders():
      try:
           folders = [item for item in os.listdir(snapshots) if os.path.isdir(os.path.join(snapshots, item))]
@@ -43,6 +52,7 @@ def view_snap():
      for i in dirlist:
           print(i)
 
+          
 def get_folders():
      dirlist = list_folders()
      newlist = [int(i[2:]) for i in dirlist]
@@ -65,9 +75,9 @@ def create_snap():
      
 def import_snap(s):
      os.chdir(cli)
-     run(["pm2","stop","ark-core-relay", "ark-core-forger"])
+     start_proc()
      run(["yarn","import:"+db,"-b",s,"--truncate"])
-     run(["pm2","start","ark-core-relay","ark-core-forger"])
+     stop_proc()
 
 
 def verify_snap(v):
@@ -82,9 +92,9 @@ def append_snap(c):
 
 def rollback(b):
      os.chdir(cli)
-     run(["pm2","stop","ark-core-relay","ark-core-forger"])
+     start_proc()
      run(["yarn","rollback:"+db,"-b",b])
-     run(["pm2","start","ark-core-relay","ark-core-forger"])
+     stop_proc()
      
      #delete snaps with blocks beyond rollback value
      dirlist = list_folders()
