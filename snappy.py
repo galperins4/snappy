@@ -63,7 +63,7 @@ def get_folders():
 
 def purge_check():
      dirlist = list_folders()
-     if len(dirlist) > 5:
+     if len(dirlist) > 4:
           l,f = get_folders()
           delete_snap(f)
 
