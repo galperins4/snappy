@@ -82,9 +82,9 @@ class CLI:
      
     def import_snap(self,s):
         os.chdir(self.cli)
-        start_proc()
+        self.start_proc()
         run(["yarn","import:"+self.db,"-b",s,"--truncate"])
-        stop_proc()
+        self.stop_proc()
 
 
     def verify_snap(self,v):
@@ -99,9 +99,9 @@ class CLI:
 
     def rollback(self,b):
         os.chdir(self.cli)
-        start_proc()
+        self.start_proc()
         run(["yarn","rollback:"+self.db,"-b",b])
-        stop_proc()
+        self.stop_proc()
      
         #delete snaps with blocks beyond rollback value
         dirlist = self.list_folders()
