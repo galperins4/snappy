@@ -108,7 +108,7 @@ class CLI:
         newlist = [int(i[2:]) for i in dirlist]
         for i in newlist:
             if i > int(b):
-                delete_snap("1-"+str(i))
+                self.delete_snap("1-"+str(i))
      
 
     def delete_snap(self,f):
