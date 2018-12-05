@@ -53,7 +53,7 @@ def menu_options():
      print("--import","imports a specific snapshot")
      print("--rollback","rollback database to specific block")
      print("--configureAWS","configures and connects AWS CLI to AWS account")
-     print("--listAWS", "lists bucket to see available snapshot"
+     print("--listAWS", "lists bucket to see available snapshot")
    
 
 if __name__ == "__main__":
