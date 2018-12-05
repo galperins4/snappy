@@ -23,7 +23,7 @@ class AWS:
     
     
     def lsBucket(self):
-        run(["aws","s3","ls,"s3://+self.bucket"])
+        run(["aws","s3","ls,"s3://"+self.bucket])
         
         # TBD capture output somehow
     
