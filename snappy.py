@@ -37,6 +37,10 @@ def menu():
           elif option=="--rollback":
                block = input("What block would you like to rollback to? ")
                cli.rollback(block)
+          elif option=="--configureAWS":
+               pass
+          elif option=="--backupS3":
+               pass
           else:
                print("Unrecognized, try --help flag for options")
                
@@ -48,6 +52,8 @@ def menu_options():
      print("--append","appends to the most recent snapshot")
      print("--import","imports a specific snapshot")
      print("--rollback","rollback database to specific block")
+     print("--configureAWS","configures and connects AWS CLI to AWS account")
+     print("--backupS3", "backs up current snapshot to AWS. Rotates and deletes old back-ups"
    
 
 if __name__ == "__main__":
