@@ -4,14 +4,15 @@
 
 ```sh
 git clone https://github.com/galperins4/snappy
+bash install.sh
 ```
 
 ## Usage
-Install dependencies by running `bash install.sh` comment. If using AWS functionality to back-up to S3 make sure to fill out aws.json in the config folder with bucket name.
-
 Run the script with the appropriate command as follows: `python3 snappy.py --flag`. For available options use the `--help` flag
 
 There is also a bash script `snappy.sh` that has also been included. You can copy the file to your home directory and add the following to crontab `/bin/bash $HOME/snappy.sh > /dev/null 2>&1` in addition to the frequency desired. This will run the append flag based on the frequency set in crontab. A prerequisite of this is that the --create flag has been used at least once to create the initial snapshot to append to. 
+
+If using AWS functionality to back-up to S3 make sure to fill out aws.json in the config folder with bucket name.
 
 ## To Do
 
