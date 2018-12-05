@@ -1,4 +1,4 @@
-from cli import CLI
+from util.cli import CLI
 import sys
 
 
