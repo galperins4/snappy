@@ -1,7 +1,7 @@
 from util.cli import CLI
 import json
 from pathlib import Path
-from subprocess import run
+import subprocess
 
 class AWS:
     def __init__(self):
@@ -20,11 +20,12 @@ class AWS:
 
 
     def configure(self):
-        run(["aws","configure"])
+        subprocess.run(["aws","configure"])
     
     
     def lsBucket(self):
-        run(["aws","s3","ls","s3://"+self.bucket])
+        subprocess.run(["aws","s3","ls","s3://"+self.bucket], stdout=subprocess.PIPE)
+        print(proc.stdout)
         
         # TBD capture output somehow
     
