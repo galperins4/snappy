@@ -26,8 +26,9 @@ class AWS:
     def lsBucket(self):
         proc = subprocess.run(["aws","s3","ls","s3://"+self.bucket], stdout=subprocess.PIPE)
         outDecode = proc.stdout.decode("utf-8").split()
-        print(outDecode)
-        
+        #last string split should be snapshot name
+        print(outDecode[-1])
+        #return outDecode[-1]
        
         
         # TBD capture output somehow
