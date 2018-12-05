@@ -1,5 +1,6 @@
-from util.cli import CLI
 import sys
+from util.aws import AWS
+from util.cli import CLI
 
 
 def menu():
@@ -51,4 +52,5 @@ def menu_options():
 
 if __name__ == "__main__":
      cli = CLI()
+     aws = AWS()
      menu()
