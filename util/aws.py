@@ -25,7 +25,7 @@ class AWS:
     
     def lsBucket(self):
         proc = subprocess.run(["aws","s3","ls","s3://"+self.bucket], stdout=subprocess.PIPE)
-        print(proc.stdout)
+        print(proc.stdout.decode("utf-8"))
         
         # TBD capture output somehow
     
