@@ -20,7 +20,6 @@ class AWS:
 
     def configure(self):
         run(["aws","configure"])
-        quit()
     
     
     def lsBucket(self):
