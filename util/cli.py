@@ -17,15 +17,15 @@ class CLI:
         
     def get_paths(self):
         home = str(Path.home())
-        c_path = home+cli_path
-        s_path = home+snap_path+db
+        c_path = home+self.cli_path
+        s_path = home+self.snap_path+self.db
      
         return c_path, s_path
 
 
     def get_database():
         home = str(Path.home())
-        env = home+env_path
+        env = home+self.env_path
         with open(env + '/network.json') as network_file:
             network = json.load(network_file)
 
@@ -42,7 +42,7 @@ class CLI:
 
     def list_folders(self):
         try:
-            folders = [item for item in os.listdir(snapshots) if os.path.isdir(os.path.join(snapshots, item))]
+            folders = [item for item in os.listdir(self.snapshots) if os.path.isdir(os.path.join(self.snapshots, item))]
         except:
             print("Oops!!! Looks like no snapshots have been taking. Try --create flag to get started.")
             quit()
@@ -54,14 +54,14 @@ class CLI:
 
 
     def view_snap(self):
-        dirlist = list_folders()
+        dirlist = self.list_folders()
         print("Available Snapshots:")
         for i in dirlist:
             print(i)
 
           
     def get_folders(self):
-        dirlist = list_folders()
+        dirlist = self.list_folders()
         newlist = [int(i[2:]) for i in dirlist]
         last = "1-"+ str(max(newlist))
         first = "1-"+str(min(newlist))
@@ -69,42 +69,42 @@ class CLI:
 
 
     def purge_check(self):
-        dirlist = list_folders()
+        dirlist = self.list_folders()
         if len(dirlist) > 4:
-            l,f = get_folders()
+            l,f = self.get_folders()
             delete_snap(f)
 
 
     def create_snap(self):
-        os.chdir(cli)
-        run(["yarn","create:"+db])
+        os.chdir(self.cli)
+        run(["yarn","create:"+self.db])
 
      
     def import_snap(self,s):
-        os.chdir(cli)
+        os.chdir(self.cli)
         start_proc()
-        run(["yarn","import:"+db,"-b",s,"--truncate"])
+        run(["yarn","import:"+self.db,"-b",s,"--truncate"])
         stop_proc()
 
 
     def verify_snap(self,v):
-        os.chdir(cli)
-        run(["yarn","verify:"+db,"--blocks",v])
+        os.chdir(self.cli)
+        run(["yarn","verify:"+self.db,"--blocks",v])
 
 
     def append_snap(self,c):
-        os.chdir(cli)
-        run(["yarn","create:"+db,"--blocks",c])
+        os.chdir(self.cli)
+        run(["yarn","create:"+self.db,"--blocks",c])
 
 
     def rollback(self,b):
-        os.chdir(cli)
+        os.chdir(self.cli)
         start_proc()
-        run(["yarn","rollback:"+db,"-b",b])
+        run(["yarn","rollback:"+self.db,"-b",b])
         stop_proc()
      
         #delete snaps with blocks beyond rollback value
-        dirlist = list_folders()
+        dirlist = self.list_folders()
         newlist = [int(i[2:]) for i in dirlist]
         for i in newlist:
             if i > int(b):
@@ -113,5 +113,5 @@ class CLI:
 
     def delete_snap(self,f):
         print("Purging Snapshot",f)
-        os.chdir(snapshots)
+        os.chdir(self.snapshots)
         run(["rm","-rf", f])
