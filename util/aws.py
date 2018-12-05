@@ -18,9 +18,15 @@ class AWS:
         return aws['bucket']
 
 
-    def lsBucket(self):
-        pass
+    def configure(self):
+        run(["aws","configure"])
+        quit()
     
+    
+    def lsBucket(self):
+        run(["aws","s3","ls,"s3://+self.bucket"])
+        
+        # TBD capture output somehow
     
     def cpBucket(self):
         pass
