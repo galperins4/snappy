@@ -72,7 +72,7 @@ class CLI:
         dirlist = self.list_folders()
         if len(dirlist) > 4:
             l,f = self.get_folders()
-            delete_snap(f)
+            self.delete_snap(f)
 
 
     def create_snap(self):
