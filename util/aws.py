@@ -27,8 +27,10 @@ class AWS:
     def lsBucket(self):
         proc = subprocess.run(["aws","s3","ls","s3://"+self.bucket], stdout=subprocess.PIPE)
         outDecode = proc.stdout.decode("utf-8").split()
-        #last string split should be snapshot name
-        return outDecode[-1]
+        try:
+            return outDecode[-1]
+        except:
+            return None
     
     
     def deletes3(self,f):
