@@ -63,7 +63,6 @@ class AWS:
         os.chdir(self.snapshots)
         #zip current
         self.createZip(l)
-        quit()
         current = l+".zip"
         #upload current
         subprocess.run(["aws","s3","cp",current, "s3://"+self.bucket+"/"+current])
