@@ -43,6 +43,8 @@ def menu():
                aws.lsBucket()
           elif option=="--uploadAWS":
                aws.cpBucket()
+          elif option=="--downloadAWS":
+               aws.restore()
           else:
                print("Unrecognized, try --help flag for options")
                
@@ -57,6 +59,7 @@ def menu_options():
      print("--configureAWS","configures and connects AWS CLI to AWS account")
      print("--listAWS", "lists bucket to see available snapshot in AWS S3")
      print("--uploadAWS", "uploads most recent snapshot to AWS S3")
+     print("--downloadAWS", "downloads most recent snapshot from AWS and imports into database")
    
 
 if __name__ == "__main__":
