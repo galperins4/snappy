@@ -54,14 +54,13 @@ class AWS:
     
     
     def cpBucket(self):
+        os.chdir(self.snapshots)
         #delete current S3 snapshot
         currents3 = self.lsBucket()
         if currents3 != None:
             self.deletes3(currents3)
         #get current
         l,f = self.cli.get_folders()
-        #change to snapshot directory
-        os.chdir(self.snapshots)
         #zip current
         self.createZip(l)
         current = l+".zip"
@@ -71,8 +70,14 @@ class AWS:
         self.cleanZip(current)
     
     def restore(self):
+        os.chdir(self.snapshots)
+        #get current and download
+        currents3 = self.lsBucket()
         #download
+        subprocess.run(["aws","s3","cp","s3://"+self.bucket+"/"+current, current])
         #unzip
-        #import
+        self.unzipZip(currents3)
         #cleanup zip
-        pass
+        self.cleanZip(currents3)
+        #import new snapshot
+        self.cli.import_snap(currents3[:-4])
