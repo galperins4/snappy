@@ -28,14 +28,18 @@ class AWS:
         proc = subprocess.run(["aws","s3","ls","s3://"+self.bucket], stdout=subprocess.PIPE)
         outDecode = proc.stdout.decode("utf-8").split()
         #last string split should be snapshot name
-        print(outDecode)
-        print(outDecode[-1])
         return outDecode[-1]
        
         
         # TBD capture output somehow
     
     def cpBucket(self,f):
+        #remove existing
+        #get current
+        #zip current
+        #upload current
+        
+        
         subprocess.run(["aws","s3","cp",f, "s3://"+self.bucket+"/"+f])
     
     
