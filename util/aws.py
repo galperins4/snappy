@@ -2,6 +2,7 @@ from util.cli import CLI
 import json
 from pathlib import Path
 import subprocess
+import os
 
 class AWS:
     def __init__(self):
