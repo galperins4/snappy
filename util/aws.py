@@ -68,7 +68,7 @@ class AWS:
         #upload current
         subprocess.run(["aws","s3","cp",current, "s3://"+self.bucket+"/"+current])
         #delete zip
-        cleanZip(current)
+        self.cleanZip(current)
     
     def restore(self):
         #download
