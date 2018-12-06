@@ -35,8 +35,8 @@ class AWS:
         
         # TBD capture output somehow
     
-    def cpBucket(self):
-        pass
+    def cpBucket(self,f):
+        subprocess.run(["aws","s3","cp",f, "s3://"+self.bucket+"/"+f)
     
     
     def rotate(self):
