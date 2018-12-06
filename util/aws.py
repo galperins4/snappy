@@ -29,18 +29,6 @@ class AWS:
         outDecode = proc.stdout.decode("utf-8").split()
         #last string split should be snapshot name
         return outDecode[-1]
-       
-        
-        # TBD capture output somehow
-    
-    def cpBucket(self,f):
-        #remove existing
-        #get current
-        #zip current
-        #upload current
-        
-        
-        subprocess.run(["aws","s3","cp",f, "s3://"+self.bucket+"/"+f])
     
     
     def deletes3(self,f):
@@ -50,13 +38,33 @@ class AWS:
         os.chdir(self.snapshots)
         subprocess.run(["zip","-r",f+".zip",f])
     
+    
     def unzipZip(self,f)
         os.chdir(self.snapshots)
         subprocess.run(["unzip",f,"-d",f[:-4]])
     
+    
     def cleanZip(self,f)
         os.chdir(self.snapshots)
         subprocess.run(["rm",f])
+    
+    
+    def cpBucket(self):
+        #delete current S3 snapshot
+        currents3 = self.lsBucket()
+        print(currents3)
+        quit()
+        self.deletes3(currents3)
+        #get current
+        l,f = self.cli.get_folders()
+        os.chdir(self.snapshots)
+        #zip current
+        self.createZip(l)
+        current = l+".zip"
+        #upload current
+        subprocess.run(["aws","s3","cp",current, "s3://"+self.bucket+"/"+current])
+        #delete zip
+        cleanZip(current)
     
     def restore(self):
         #download
