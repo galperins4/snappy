@@ -41,7 +41,7 @@ def menu():
                aws.configure()
           elif option=="--listAWS":
                aws.lsBucket()
-          elif option=="uploadAWS":
+          elif option=="--uploadAWS":
                aws.cpBucket()
           else:
                print("Unrecognized, try --help flag for options")
