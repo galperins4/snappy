@@ -43,15 +43,32 @@ class AWS:
         subprocess.run(["aws","s3","cp",f, "s3://"+self.bucket+"/"+f])
     
     
-    def rotate(self):
-        pass
+    def deletes3(self,f):
+        subprocess.run(["aws","s3","rm", "s3://"+self.bucket+"/"+f])
     
+    def createZip(self,f)
+        os.chdir(self.snapshots)
+        subprocess.run(["zip","-r",f+".zip",f])
+    
+    def unzipZip(self,f)
+        os.chdir(self.snapshots)
+        subprocess.run(["unzip",f,"-d",f[:-4]])
+    
+    def cleanZip(self,f)
+        os.chdir(self.snapshots)
+        subprocess.run(["rm",f])
     
     def restore(self):
+        #download
+        #unzip
+        #import
+        #cleanup zip
         pass
 
     
-    #os.chdir(self.cli)
+    
+    
+
     #run(["yarn","import:"+self.db,"-b",s,"--truncate
     #delete - aws s3 rm s3://mybucket/test2.txt
     #copy -  aws s3 cp 1-6590390.zip s3://devnet-tester/1-6590390.zip
