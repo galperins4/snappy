@@ -39,8 +39,6 @@ def menu():
                cli.rollback(block)
           elif option=="--configureAWS":
                aws.configure()
-          elif option=="--listAWS":
-               aws.lsBucket()
           elif option=="--uploadAWS":
                aws.cpBucket()
           elif option=="--downloadAWS":
@@ -57,7 +55,6 @@ def menu_options():
      print("--import","imports a specific snapshot")
      print("--rollback","rollback database to specific block")
      print("--configureAWS","configures and connects AWS CLI to AWS account")
-     print("--listAWS", "lists bucket to see available snapshot in AWS S3")
      print("--uploadAWS", "uploads most recent snapshot to AWS S3")
      print("--downloadAWS", "downloads most recent snapshot from AWS and imports into database")
    
