@@ -56,14 +56,13 @@ class AWS:
         currents3 = self.lsBucket()
         if currents3 != None:
             self.deletes3(currents3)
-        
         #get current
         l,f = self.cli.get_folders()
-        print(l)
-        quit()
+        #change to snapshot directory
         os.chdir(self.snapshots)
         #zip current
         self.createZip(l)
+        quit()
         current = l+".zip"
         #upload current
         subprocess.run(["aws","s3","cp",current, "s3://"+self.bucket+"/"+current])
