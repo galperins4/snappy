@@ -5,6 +5,10 @@
 ```sh
 git clone https://github.com/galperins4/snappy
 bash install.sh
+
+#optional - configure AWS CLI for S3 upload/downloads
+python3 snappy.py --configureAWS
+
 ```
 
 ## Usage
