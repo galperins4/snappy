@@ -9,8 +9,9 @@ class AWS:
         self.bucket=self.import_config()
         self.cli=CLI()
         
-        self.db = self.cli.get_database()
-        self.cli, self.snapshots = self.cli.get_paths()
+        self.db = self.cli.db
+        self.clip = self.cli.cli 
+        self.snapshots = self.cli.snapshots
 
     
     def import_config(self):
