@@ -45,7 +45,7 @@ class AWS:
     
     def unzipZip(self,f):
         os.chdir(self.snapshots)
-        subprocess.run(["unzip",f,"-d",f[:-4]])
+        subprocess.run(["unzip",f])
     
     
     def cleanZip(self,f):
