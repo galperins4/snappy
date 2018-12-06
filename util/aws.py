@@ -64,14 +64,3 @@ class AWS:
         #import
         #cleanup zip
         pass
-
-    
-    
-    
-
-    #run(["yarn","import:"+self.db,"-b",s,"--truncate
-    #delete - aws s3 rm s3://mybucket/test2.txt
-    #copy -  aws s3 cp 1-6590390.zip s3://devnet-tester/1-6590390.zip
-    #zip command - zip -r 1-6590390.zip 1-6590390
-    #unzip command - unzip file.zip -d destination_folder
-    #list command -- aws s3 ls s3://mybucket
