@@ -52,6 +52,8 @@ class AWS:
     def cpBucket(self):
         #delete current S3 snapshot
         currents3 = self.lsBucket()
+        print(currents3)
+        quit()
         # ADD IN FIRST TIME CHECK - IF NONE, skip delete
         self.deletes3(currents3)
         quit()
