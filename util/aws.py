@@ -74,7 +74,7 @@ class AWS:
         #get current and download
         currents3 = self.lsBucket()
         #download
-        subprocess.run(["aws","s3","cp","s3://"+self.bucket+"/"+current, current])
+        subprocess.run(["aws","s3","cp","s3://"+self.bucket+"/"+currents3, currents3])
         #unzip
         self.unzipZip(currents3)
         #cleanup zip
