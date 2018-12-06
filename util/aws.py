@@ -36,7 +36,8 @@ class AWS:
     
     def deletes3(self,f):
         subprocess.run(["aws","s3","rm", "s3://"+self.bucket+"/"+f])
-    
+   
+
     def createZip(self,f):
         os.chdir(self.snapshots)
         subprocess.run(["zip","-r",f+".zip",f])
