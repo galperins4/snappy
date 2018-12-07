@@ -14,6 +14,10 @@ class AWS:
         self.clip = self.cli.cli 
         self.snapshots = self.cli.snapshots
 
+        
+    def menu():
+        pass
+    
     
     def import_config(self):
         with open(self.path / 'snappy/config/aws.json') as aws_file:
