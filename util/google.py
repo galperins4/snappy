@@ -1,2 +1,2 @@
-class Google():
+class Google:
     pass
