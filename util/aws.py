@@ -1,4 +1,5 @@
-from util.cli import CLI
+#from util.cli import CLI
+from util.fileops import FileOps
 import json
 from pathlib import Path
 import subprocess
