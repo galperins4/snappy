@@ -37,3 +37,23 @@ class FileOps:
     def cleanZip(self,f):
         os.chdir(self.snapshots)
         subprocess.run(["rm",f])
+        
+    def list_folders(self):
+        try:
+            folders = [item for item in os.listdir(self.snapshots) if os.path.isdir(os.path.join(self.snapshots, item))]
+        except:
+            print("Oops!!! Looks like no snapshots have been taking. Try --create flag to get started.")
+            quit()
+    
+        if 'rollbackTransactions' in folders:
+            folders.remove('rollbackTransactions')
+        
+        return sorted(folders)
+
+    
+    def get_folders(self):
+        dirlist = self.list_folders()
+        newlist = [int(i[2:]) for i in dirlist]
+        last = "1-"+ str(max(newlist))
+        first = "1-"+str(min(newlist))
+        return last, first
