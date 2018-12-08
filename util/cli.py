@@ -134,7 +134,7 @@ class CLI:
                self.view_snap()
         elif option=="--create":
                self.create_snap()
-               l,f = self.get_folders()
+               l,f = self.fileops.get_folders()
                self.verify_snap(l)
                self.purge_check()
         elif option=="--append":
