@@ -70,7 +70,7 @@ class AWS:
          print("--downloadAWS", "downloads most recent snapshot from AWS and imports into database")
          
         
-    def menu(self):
+    def menu(self, option):
          if option=="--configureAWS":
               aws.configure()
          elif option=="--uploadAWS":
