@@ -117,3 +117,8 @@ class CLI:
         print("Purging Snapshot",f)
         os.chdir(self.snapshots)
         run(["rm","-rf", f])
+
+        
+        
+    def menu(self):
+        pass
