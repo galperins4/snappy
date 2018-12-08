@@ -21,9 +21,9 @@ def main_menu():
           elif option =="--helpDB":
                pass
           elif option in cli_options:
-               cli.menu()
+               cli.menu(option)
           elif option in aws_options:
-               aws.menu()
+               aws.menu(option)
           elif option in db_options:
                pass
           else:
