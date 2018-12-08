@@ -8,6 +8,8 @@ import sys
 
 class CLI:
     def __init__(self):
+        self.fileops = FileOps()
+        
         self.cli_path = '/ark-core/packages/core-snapshots-cli'
         self.snap_path = '/.ark/snapshots/'
         self.env_path = '/.ark/config'
@@ -125,3 +127,33 @@ class CLI:
         print("--append","appends to the most recent snapshot")
         print("--import","imports a specific snapshot")
         print("--rollback","rollback database to specific block")
+
+        
+    def menu(self):
+        if option=="--view":
+               cli.view_snap()
+        elif option=="--create":
+               cli.create_snap()
+               l,f = cli.get_folders()
+               cli.verify_snap(l)
+               cli.purge_check()
+        elif option=="--append":
+               l,f = cli.get_folders()
+               cli.append_snap(l)
+               l,f = cli.get_folders()
+               cli.verify_snap(l)
+               cli.purge_check()
+        elif option=="--import":
+               snap_opt = cli.list_folders()
+               tmp_menu = {}
+               for counter, i in enumerate(snap_opt):
+                    tmp_menu[counter+1]=i
+                    print(counter+1,"-", i)
+               snap_select = int(input("Select one of the options noted above "))
+               if snap_select in tmp_menu.keys():
+                    cli.import_snap(tmp_menu[snap_select])
+               else:
+                    print("Something went wrong, please try again")
+        elif option=="--rollback":
+               block = input("What block would you like to rollback to? ")
+               cli.rollback(block)
