@@ -4,6 +4,10 @@ from util.cli import CLI
 
 
 def main_menu():
+     cli_options = ["--view","--create","--append","--import","--rollback"]
+     aws_options = ["--configureAWS","--uploadAWS","--downloadAWS"]
+     db_options = [""]
+     
      if len(sys.argv) == 1:
           print("No Arguments Passed, try --help flag for options")
      else:
@@ -16,6 +20,13 @@ def main_menu():
                aws.menu_options()
           elif option =="--helpDB":
                pass
+          elif option in cli_options:
+               cli.menu()
+          elif option in aws_options:
+               aws.menu()
+          elif option in db_options:
+               pass
+               
           
           
           
@@ -55,7 +66,6 @@ def main_menu():
           elif option=="--downloadAWS":
                aws.restore()
           '''
-          
           else:
                print("Unrecognized, try --help flag for options")
              
