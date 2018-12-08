@@ -72,8 +72,8 @@ class AWS:
         
     def menu(self, option):
          if option=="--configureAWS":
-              aws.configure()
+              self.configure()
          elif option=="--uploadAWS":
-              aws.cpBucket()
+              self.cpBucket()
          elif option=="--downloadAWS":
-              aws.restore()
+              self.restore()
