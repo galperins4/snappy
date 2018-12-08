@@ -129,7 +129,7 @@ class CLI:
         print("--rollback","rollback database to specific block")
 
         
-    def menu(self):
+    def menu(self, option):
         if option=="--view":
                self.view_snap()
         elif option=="--create":
