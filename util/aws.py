@@ -8,6 +8,7 @@ class AWS:
     def __init__(self):
         self.fileops = FileOps()
         self.cli = CLI()
+        self.bucket=self.import_config()
 
     
     def import_config(self):
