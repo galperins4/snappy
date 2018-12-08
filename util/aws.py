@@ -89,13 +89,13 @@ class AWS:
 
         
             
-    def menu_options():
+    def menu_options(self):
          print("--configureAWS","configures and connects AWS CLI to AWS account")
          print("--uploadAWS", "uploads most recent snapshot to AWS S3")
          print("--downloadAWS", "downloads most recent snapshot from AWS and imports into database")
          
         
-    def menu():
+    def menu(self):
          if option=="--configureAWS":
               aws.configure()
          elif option=="--uploadAWS":
