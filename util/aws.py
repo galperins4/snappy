@@ -92,5 +92,9 @@ class AWS:
          
         
     def menu():
-        pass
-        
+         if option=="--configureAWS":
+              aws.configure()
+         elif option=="--uploadAWS":
+              aws.cpBucket()
+         elif option=="--downloadAWS":
+              aws.restore()
