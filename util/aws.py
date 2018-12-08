@@ -12,7 +12,7 @@ class AWS:
 
     
     def import_config(self):
-        p = self.fileops.path+ 'snappy/config/aws.json'
+        p = self.fileops.home+ 'snappy/config/aws.json'
         print(p)
         quit()
         with open(p) as aws_file:
