@@ -86,8 +86,11 @@ class AWS:
         
             
     def menu_options():
-        pass
-            
+         print("--configureAWS","configures and connects AWS CLI to AWS account")
+         print("--uploadAWS", "uploads most recent snapshot to AWS S3")
+         print("--downloadAWS", "downloads most recent snapshot from AWS and imports into database")
+         
+        
     def menu():
         pass
         
