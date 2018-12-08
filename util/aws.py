@@ -44,7 +44,7 @@ class AWS:
         self.fileops.createZip(l)
         current = l+".zip"
         #upload current
-        subprocess.run([self.fileops.aws, "s3", "cp", aurrent, "s3://"+self.bucket+"/"+current])
+        subprocess.run([self.fileops.aws,"s3","cp",current,"s3://"+self.bucket+"/"+current])
         #delete zip
         self.fileops.cleanZip(current)
     
