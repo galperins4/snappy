@@ -3,13 +3,24 @@ from util.aws import AWS
 from util.cli import CLI
 
 
-def menu():
+def main_menu():
      if len(sys.argv) == 1:
           print("No Arguments Passed, try --help flag for options")
      else:
           option = sys.argv[1]
           if option=="--help":
                menu_options()
+          elif option =="--helpCLI":
+               cli.menu_options()
+          elif option =="--helpAWS":
+               aws.menu_options()
+          elif option =="--helpDB":
+               pass
+          
+          
+          
+          
+          '''
           elif option=="--view":
                cli.view_snap()
           elif option=="--create":
@@ -43,12 +54,20 @@ def menu():
                aws.cpBucket()
           elif option=="--downloadAWS":
                aws.restore()
+          '''
+          
           else:
                print("Unrecognized, try --help flag for options")
-               
+             
 
 def menu_options():
      print("--help","shows available menu options")
+     print("--helpCLI", "shows available CLI menu options")
+     print("--helpAWS", "shows available AWS menu options")
+     print("--helpDB", "shows available DropBox menu options")
+     
+     
+     '''
      print("--view","shows available snapshots to use")
      print("--create","creates a new snapshot")
      print("--append","appends to the most recent snapshot")
@@ -57,9 +76,9 @@ def menu_options():
      print("--configureAWS","configures and connects AWS CLI to AWS account")
      print("--uploadAWS", "uploads most recent snapshot to AWS S3")
      print("--downloadAWS", "downloads most recent snapshot from AWS and imports into database")
-   
+     '''
 
 if __name__ == "__main__":
      cli = CLI()
      aws = AWS()
-     menu()
+     main_menu()
