@@ -15,14 +15,14 @@ class CLI:
         self.db = self.get_database()
         self.cli, self.snapshots = self.get_paths()
 
-        
+    '''    
     def get_paths(self):
         home = str(Path.home())
         c_path = home+self.cli_path
         s_path = home+self.snap_path+self.db
      
         return c_path, s_path
-
+    
 
     def get_database(self):
         home = str(Path.home())
@@ -32,6 +32,7 @@ class CLI:
 
         return network['name']
 
+    '''
 
     def start_proc(self):
         run(["pm2","stop","ark-core-relay", "ark-core-forger"])
@@ -40,7 +41,7 @@ class CLI:
     def stop_proc(self):
         run(["pm2","start","ark-core-relay","ark-core-forger"])
      
-
+    '''
     def list_folders(self):
         try:
             folders = [item for item in os.listdir(self.snapshots) if os.path.isdir(os.path.join(self.snapshots, item))]
@@ -52,7 +53,7 @@ class CLI:
             folders.remove('rollbackTransactions')
         
         return sorted(folders)
-
+    '''
 
     def view_snap(self):
         dirlist = self.list_folders()
@@ -60,14 +61,14 @@ class CLI:
         for i in dirlist:
             print(i)
 
-          
+    '''   
     def get_folders(self):
         dirlist = self.list_folders()
         newlist = [int(i[2:]) for i in dirlist]
         last = "1-"+ str(max(newlist))
         first = "1-"+str(min(newlist))
         return last, first
-
+    '''
 
     def purge_check(self):
         dirlist = self.list_folders()
