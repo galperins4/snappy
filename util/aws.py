@@ -1,12 +1,16 @@
 #from util.cli import CLI
 from util.fileops import FileOps
 import json
-from pathlib import Path
+#from pathlib import Path
 import subprocess
 import os
 
 class AWS:
     def __init__(self):
+        self.fileops = FileOps()
+        
+        
+        '''
         self.path = Path().resolve().parent
         self.bucket=self.import_config()
         self.cli=CLI()
@@ -14,7 +18,7 @@ class AWS:
         self.db = self.cli.db
         self.clip = self.cli.cli 
         self.snapshots = self.cli.snapshots
-
+        '''
     
     def import_config(self):
         with open(self.path / 'snappy/config/aws.json') as aws_file:
