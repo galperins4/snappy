@@ -26,11 +26,9 @@ def main_menu():
                aws.menu()
           elif option in db_options:
                pass
-               
-          
-          
-          
-          
+          else:
+               print("Unrecognized, try --help flag for options")
+                    
           '''
           elif option=="--view":
                cli.view_snap()
@@ -66,10 +64,7 @@ def main_menu():
           elif option=="--downloadAWS":
                aws.restore()
           '''
-          else:
-               print("Unrecognized, try --help flag for options")
              
-
 def menu_options():
      print("--help","shows available menu options")
      print("--helpCLI", "shows available CLI menu options")
