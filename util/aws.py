@@ -6,6 +6,7 @@ import os
 class AWS:
     def __init__(self):
         self.fileops = FileOps()
+        self.cli = CLI()
 
     
     def import_config(self):
@@ -15,11 +16,11 @@ class AWS:
 
 
     def configure(self):
-        subprocess.run(["aws","configure"])
+        subprocess.run([self.fileops.aws,"configure"])
     
     
     def lsBucket(self):
-        proc = subprocess.run(["aws","s3","ls","s3://"+self.bucket], stdout=subprocess.PIPE)
+        proc = subprocess.run([self.fileops.aws,"s3","ls","s3://"+self.bucket], stdout=subprocess.PIPE)
         outDecode = proc.stdout.decode("utf-8").split()
         try:
             return outDecode[-1]
@@ -28,11 +29,11 @@ class AWS:
     
     
     def deletes3(self,f):
-        subprocess.run(["aws","s3","rm", "s3://"+self.bucket+"/"+f])
+        subprocess.run([self.fileops.aws,"s3","rm", "s3://"+self.bucket+"/"+f])
    
 
     def createZip(self,f):
-        os.chdir(self.snapshots)
+        os.chdir(self.fileops.snapshots)
         subprocess.run(["zip","-r",f+".zip",f])
     
     
@@ -43,35 +44,35 @@ class AWS:
     
     def cleanZip(self,f):
         os.chdir(self.snapshots)
-        subprocess.run(["rm",f])
+        subprocess.run(["rm"
     
     
     def cpBucket(self):
-        os.chdir(self.snapshots)
+        os.chdir(self.fileops.snapshots)
         #delete current S3 snapshot
         currents3 = self.lsBucket()
         if currents3 != None:
             self.deletes3(currents3)
         #get current
-        l,f = self.cli.get_folders()
+        l,f = self.fileops.get_folders()
         #zip current
-        self.createZip(l)
+        self.fileops.createZip(l)
         current = l+".zip"
         #upload current
-        subprocess.run(["aws","s3","cp",current, "s3://"+self.bucket+"/"+current])
+        subprocess.run([self.fileops.aws, "s3", "cp", aurrent, "s3://"+self.bucket+"/"+current])
         #delete zip
-        self.cleanZip(current)
+        self.fileops.cleanZip(current)
     
     def restore(self):
-        os.chdir(self.snapshots)
+        os.chdir(self.fileops.snapshots)
         #get current and download
         currents3 = self.lsBucket()
         #download
-        subprocess.run(["aws","s3","cp","s3://"+self.bucket+"/"+currents3, currents3])
+        subprocess.run([self.fileops.aws,"s3","cp","s3://"+self.bucket+"/"+currents3, currents3])
         #unzip
-        self.unzipZip(currents3)
+        self.fileops.unzipZip(currents3)
         #cleanup zip
-        self.cleanZip(currents3)
+        self.fileops.cleanZip(currents3)
         #import new snapshot
         self.cli.import_snap(currents3[:-4])
 
