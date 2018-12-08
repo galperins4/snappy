@@ -13,6 +13,7 @@ class AWS:
         self.db = self.cli.db
         self.clip = self.cli.cli 
         self.snapshots = self.cli.snapshots
+        self.aws = (self.path / ".local/bin/aws")
 
     
     def import_config(self):
@@ -22,11 +23,11 @@ class AWS:
 
 
     def configure(self):
-        subprocess.run(["aws","configure"])
+        subprocess.run([self.aws,"configure"])
     
     
     def lsBucket(self):
-        proc = subprocess.run(["aws","s3","ls","s3://"+self.bucket], stdout=subprocess.PIPE)
+        proc = subprocess.run([self.aws,"s3","ls","s3://"+self.bucket], stdout=subprocess.PIPE)
         outDecode = proc.stdout.decode("utf-8").split()
         try:
             return outDecode[-1]
@@ -35,7 +36,7 @@ class AWS:
     
     
     def deletes3(self,f):
-        subprocess.run(["aws","s3","rm", "s3://"+self.bucket+"/"+f])
+        subprocess.run([self.aws,"s3","rm", "s3://"+self.bucket+"/"+f])
    
 
     def createZip(self,f):
@@ -65,7 +66,7 @@ class AWS:
         self.createZip(l)
         current = l+".zip"
         #upload current
-        subprocess.run(["aws","s3","cp",current, "s3://"+self.bucket+"/"+current])
+        subprocess.run([self.aws,"s3","cp",current, "s3://"+self.bucket+"/"+current])
         #delete zip
         self.cleanZip(current)
     
@@ -74,7 +75,7 @@ class AWS:
         #get current and download
         currents3 = self.lsBucket()
         #download
-        subprocess.run(["aws","s3","cp","s3://"+self.bucket+"/"+currents3, currents3])
+        subprocess.run([self.aws,"s3","cp","s3://"+self.bucket+"/"+currents3, currents3])
         #unzip
         self.unzipZip(currents3)
         #cleanup zip
