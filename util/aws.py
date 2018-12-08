@@ -15,10 +15,6 @@ class AWS:
         self.clip = self.cli.cli 
         self.snapshots = self.cli.snapshots
 
-        
-    def menu():
-        pass
-    
     
     def import_config(self):
         with open(self.path / 'snappy/config/aws.json') as aws_file:
@@ -86,3 +82,12 @@ class AWS:
         self.cleanZip(currents3)
         #import new snapshot
         self.cli.import_snap(currents3[:-4])
+
+        
+            
+    def menu_options():
+        pass
+            
+    def menu():
+        pass
+        
