@@ -25,7 +25,7 @@ class BackBlazeB2:
     def lsBucket(self):
         proc = subprocess.run([self.fileops.blaze,"ls",self.bucket], stdout=subprocess.PIPE)
         outDecode = proc.stdout.decode("utf-8").split()
-        print(OutDecode)
+        print(outDecode)
         quit()
         try:
             return outDecode[-1]
