@@ -11,7 +11,7 @@ class FileOps:
         self.snap_path = '/.ark/snapshots/'
         self.env_path = '/.ark/config'
         self.aws_path = '/.local/bin/aws'
-        self..blaze_path = '/.local/bin/b2'
+        self.blaze_path = '/.local/bin/b2'
         
         self.db = self.get_database()
         self.cli, self.snapshots, self.aws, self.blaze = self.get_paths()
