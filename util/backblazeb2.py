@@ -29,7 +29,7 @@ class BackBlazeB2:
         try:
             # outDecode[0]
             get_id = subprocess.run([self.fileops.blaze,"list-file-names",self.bucket, outDecode[0]])
-            print(get_id['fileId'])
+            print(get_id['files']['fileId'])
         except:
             return None, None
 
