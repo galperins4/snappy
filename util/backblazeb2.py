@@ -19,7 +19,7 @@ class BackBlazeB2:
         return blaze['blaze_bucket']
 
     def authorize(self):
-        subprocess.run([self.fileops.blaze,"authorize"])
+        subprocess.run([self.fileops.blaze,"authorize-account"])
     
     
     def lsBucket(self):
