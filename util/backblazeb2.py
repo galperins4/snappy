@@ -18,8 +18,8 @@ class BackBlazeB2:
            blaze = json.load(blaze_file)
         return blaze['blaze_bucket']
 
- def configure(self):
-        subprocess.run([self.fileops.aws,"configure"])
+    def authorize(self):
+        subprocess.run([self.fileops.blaze,"authorize"])
     
     
     def lsBucket(self):
