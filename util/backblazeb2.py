@@ -61,15 +61,15 @@ class BackBlazeB2:
     def restore(self):
         os.chdir(self.fileops.snapshots)
         #get current and download
-        currents3 = self.lsBucket()
+        currentb2_name, currentb2_id = self.lsBucket()
         #download
         subprocess.run([self.fileops.blaze,"s3","cp","s3://"+self.bucket+"/"+currents3, currents3])
         #unzip
-        self.fileops.unzipZip(currents3)
+        self.fileops.unzipZip(currentb2_name)
         #cleanup zip
-        self.fileops.cleanZip(currents3)
+        self.fileops.cleanZip(currentb2_name)
         #import new snapshot
-        self.cli.import_snap(currents3[:-4])
+        self.cli.import_snap(currentb2_name[:-4])
 
         
             
