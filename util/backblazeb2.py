@@ -33,9 +33,7 @@ class BackBlazeB2:
             quit()
         except:
             return None
-        
-        get_id = subprocess.run([self.fileops.blaze,"list-file-names",self.bucket, outDecode[0]])
-    b2 list-file-names ark-devnet 1-932000.zip
+
     
     def deleteb2(self,f):
         subprocess.run([self.fileops.blaze,"s3","rm", "s3://"+self.bucket+"/"+f])
