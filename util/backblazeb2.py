@@ -30,7 +30,6 @@ class BackBlazeB2:
             # outDecode[0]
             get_id = subprocess.run([self.fileops.blaze,"list-file-names",self.bucket, outDecode[0]])
             print(get_id)
-            quit()
         except:
             return None
 
@@ -43,6 +42,7 @@ class BackBlazeB2:
         os.chdir(self.fileops.snapshots)
         #delete current S3 snapshot
         currents3 = self.lsBucket()
+        quit()
         if currents3 != None:
             self.deleteb2(currents3)
         #get current
