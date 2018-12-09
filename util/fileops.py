@@ -11,17 +11,19 @@ class FileOps:
         self.snap_path = '/.ark/snapshots/'
         self.env_path = '/.ark/config'
         self.aws_path = '/.local/bin/aws'
+        self..blaze_path = '/.local/bin/b2'
         
         self.db = self.get_database()
-        self.cli, self.snapshots, self.aws = self.get_paths()
+        self.cli, self.snapshots, self.aws, self.blaze = self.get_paths()
 
         
     def get_paths(self):
         c_path = self.home+self.cli_path
         s_path = self.home+self.snap_path+self.db
-        a_path = self.home+self.aws_path 
+        a_path = self.home+self.aws_path
+        b_path = self.home+self.blaze_path
     
-        return c_path, s_path, a_path
+        return c_path, s_path, a_path, b_path
 
 
     def get_database(self):
