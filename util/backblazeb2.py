@@ -29,9 +29,9 @@ class BackBlazeB2:
         try:
             # outDecode[0]
             get_id = subprocess.run([self.fileops.blaze,"list-file-names",self.bucket, outDecode[0]])
-            print(get_id)
+            print(get_id['fileId'])
         except:
-            return None
+            return None, None
 
     
     def deleteb2(self,f):
