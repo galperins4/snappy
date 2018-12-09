@@ -32,8 +32,8 @@ class BackBlazeB2:
             return None
     
     
-    def deletes3(self,f):
-        subprocess.run([self.fileops.aws,"s3","rm", "s3://"+self.bucket+"/"+f])
+    def deleteb2(self,f):
+        subprocess.run([self.fileops.blaze,"s3","rm", "s3://"+self.bucket+"/"+f])
     
     
     def cpBucket(self):
@@ -41,14 +41,14 @@ class BackBlazeB2:
         #delete current S3 snapshot
         currents3 = self.lsBucket()
         if currents3 != None:
-            self.deletes3(currents3)
+            self.deleteb2(currents3)
         #get current
         l,f = self.fileops.get_folders()
         #zip current
         self.fileops.createZip(l)
         current = l+".zip"
         #upload current
-        subprocess.run([self.fileops.aws,"s3","cp",current,"s3://"+self.bucket+"/"+current])
+        subprocess.run([self.fileops.blaze,"s3","cp",current,"s3://"+self.bucket+"/"+current])
         #delete zip
         self.fileops.cleanZip(current)
     
@@ -57,7 +57,7 @@ class BackBlazeB2:
         #get current and download
         currents3 = self.lsBucket()
         #download
-        subprocess.run([self.fileops.aws,"s3","cp","s3://"+self.bucket+"/"+currents3, currents3])
+        subprocess.run([self.fileops.blaze,"s3","cp","s3://"+self.bucket+"/"+currents3, currents3])
         #unzip
         self.fileops.unzipZip(currents3)
         #cleanup zip
