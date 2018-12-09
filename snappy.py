@@ -7,7 +7,7 @@ from util.cli import CLI
 def main_menu():
      cli_options = ["--view","--create","--append","--import","--rollback"]
      aws_options = ["--configureAWS","--uploadAWS","--downloadAWS"]
-     blaze_options = ["--uploadB2", "--downloadB2"]
+     blaze_options = ["--authorizeB2","--uploadB2", "--downloadB2"]
      
      if len(sys.argv) == 1:
           print("No Arguments Passed, try --help flag for options")
