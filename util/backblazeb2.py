@@ -24,9 +24,9 @@ class BackBlazeB2:
     
     def lsBucket(self):
         proc = subprocess.run([self.fileops.blaze,"ls",self.bucket], stdout=subprocess.PIPE)
-        print(proc)
-        quit()
         outDecode = proc.stdout.decode("utf-8").split()
+        print(OutDecode)
+        quit()
         try:
             return outDecode[-1]
         except:
