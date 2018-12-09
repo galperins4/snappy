@@ -25,8 +25,8 @@ def main_menu():
                cli.menu(option)
           elif option in aws_options:
                aws.menu(option)
-          elif option in db_options:
-               pass
+          elif option in blaze_options:
+               blaze.menu(option)
           else:
                print("Unrecognized, try --help flag for options")
 
