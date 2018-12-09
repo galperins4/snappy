@@ -29,7 +29,7 @@ class AWS:
             return outDecode[-1]
         except:
             return None
-    
+   
     
     def deletes3(self,f):
         subprocess.run([self.fileops.aws,"s3","rm", "s3://"+self.bucket+"/"+f])
@@ -65,7 +65,6 @@ class AWS:
         self.cli.import_snap(currents3[:-4])
 
         
-            
     def menu_options(self):
          print("--configureAWS","configures and connects AWS CLI to AWS account")
          print("--uploadAWS", "uploads most recent snapshot to AWS S3")
