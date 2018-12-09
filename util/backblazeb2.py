@@ -67,9 +67,9 @@ class BackBlazeB2:
         
             
     def menu_options(self):
-         print("--authorizeB2","configures and connects AWS CLI to AWS account")
-         print("--uploadB2", "uploads most recent snapshot to AWS S3")
-         print("--downloadB2", "downloads most recent snapshot from AWS and imports into database")
+         print("--authorizeB2","configures authorizes BackBlaze B2 connection")
+         print("--uploadB2", "uploads most recent snapshot to BackBlaze B2")
+         print("--downloadB2", "downloads most recent snapshot from BackBlaze B2 and imports into database")
          
         
     def menu(self, option):
