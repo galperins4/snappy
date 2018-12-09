@@ -32,7 +32,7 @@ class BackBlazeB2:
             idDecode = get_id.stdout.decode("utf-8").split()
             fileName=outDecode[0]
             fileId=idDecode[17]
-            print(fileName, fileId[1:-1])
+            print(fileName, fileId[1:-2])
             
             return fileName, fileId
             
