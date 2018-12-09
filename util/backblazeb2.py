@@ -17,3 +17,65 @@ class BackBlazeB2:
         with open(p) as blaze_file:
            blaze = json.load(blaze_file)
         return blaze['blaze_bucket']
+
+ def configure(self):
+        subprocess.run([self.fileops.aws,"configure"])
+    
+    
+    def lsBucket(self):
+        proc = subprocess.run([self.fileops.aws,"s3","ls","s3://"+self.bucket], stdout=subprocess.PIPE)
+        outDecode = proc.stdout.decode("utf-8").split()
+        try:
+            return outDecode[-1]
+        except:
+            return None
+    
+    
+    def deletes3(self,f):
+        subprocess.run([self.fileops.aws,"s3","rm", "s3://"+self.bucket+"/"+f])
+    
+    
+    def cpBucket(self):
+        os.chdir(self.fileops.snapshots)
+        #delete current S3 snapshot
+        currents3 = self.lsBucket()
+        if currents3 != None:
+            self.deletes3(currents3)
+        #get current
+        l,f = self.fileops.get_folders()
+        #zip current
+        self.fileops.createZip(l)
+        current = l+".zip"
+        #upload current
+        subprocess.run([self.fileops.aws,"s3","cp",current,"s3://"+self.bucket+"/"+current])
+        #delete zip
+        self.fileops.cleanZip(current)
+    
+    def restore(self):
+        os.chdir(self.fileops.snapshots)
+        #get current and download
+        currents3 = self.lsBucket()
+        #download
+        subprocess.run([self.fileops.aws,"s3","cp","s3://"+self.bucket+"/"+currents3, currents3])
+        #unzip
+        self.fileops.unzipZip(currents3)
+        #cleanup zip
+        self.fileops.cleanZip(currents3)
+        #import new snapshot
+        self.cli.import_snap(currents3[:-4])
+
+        
+            
+    def menu_options(self):
+         print("--authorizeB2","configures and connects AWS CLI to AWS account")
+         print("--uploadB2", "uploads most recent snapshot to AWS S3")
+         print("--downloadB2", "downloads most recent snapshot from AWS and imports into database")
+         
+        
+    def menu(self, option):
+         if option=="--authorizeB2":
+              self.authrize()
+         elif option=="--uploadB2":
+              self.cpBucket()
+         elif option=="--downloadB2":
+              self.restore()
