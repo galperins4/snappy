@@ -29,7 +29,9 @@ class BackBlazeB2:
         try:
             # outDecode[0]
             get_id = subprocess.run([self.fileops.blaze,"list-file-names",self.bucket, outDecode[0]], stdout=subprocess.PIPE)
-            print(get_id)
+            idDecode = get_id.stdout.decode("utf-8")
+            
+            print(idDecode)
         except:
             return None, None
 
