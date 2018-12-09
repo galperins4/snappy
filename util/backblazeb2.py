@@ -32,9 +32,7 @@ class BackBlazeB2:
             idDecode = get_id.stdout.decode("utf-8").split()
             fileName=outDecode[0]
             fileId=idDecode[17]
-            print(fileName, fileId[1:-2])
-            
-            return fileName, fileId
+            return fileName, fileId[1:-2]
             
         except:
             return None, None
@@ -48,10 +46,10 @@ class BackBlazeB2:
         os.chdir(self.fileops.snapshots)
         #delete current S3 snapshot
         currentb2_name, currentb2_id = self.lsBucket()
-        quit()
         if currentb2_name != None:
             self.deleteb2(currentb2_name, currentb2_id)
         #get current
+        quit()
         l,f = self.fileops.get_folders()
         #zip current
         self.fileops.createZip(l)
