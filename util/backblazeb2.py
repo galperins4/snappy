@@ -49,12 +49,12 @@ class BackBlazeB2:
         if currentb2_name != None:
             self.deleteb2(currentb2_name, currentb2_id)
         #get current
-        quit()
         l,f = self.fileops.get_folders()
         #zip current
         self.fileops.createZip(l)
         current = l+".zip"
         #upload current
+        quit()
         subprocess.run([self.fileops.blaze,"s3","cp",current,"s3://"+self.bucket+"/"+current])
         #delete zip
         self.fileops.cleanZip(current)
