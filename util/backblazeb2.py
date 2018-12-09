@@ -63,7 +63,7 @@ class BackBlazeB2:
         #get current and download
         currentb2_name, currentb2_id = self.lsBucket()
         #download
-        subprocess.run([self.fileops.blaze,"s3","cp","s3://"+self.bucket+"/"+currents3, currents3])
+        subprocess.run([self.fileops.blaze,"download-file-by-name",currentb2_name, currentb2_name])
         #unzip
         self.fileops.unzipZip(currentb2_name)
         #cleanup zip
