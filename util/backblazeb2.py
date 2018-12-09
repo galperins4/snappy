@@ -30,23 +30,26 @@ class BackBlazeB2:
             # outDecode[0]
             get_id = subprocess.run([self.fileops.blaze,"list-file-names",self.bucket, outDecode[0]], stdout=subprocess.PIPE)
             idDecode = get_id.stdout.decode("utf-8").split()
-            print(idDecode)
-            print(idDecode[17])
+            fileName=outDecode[0]
+            fileId=idDecode[17]
+            
+            return fileName, fileId
+            
         except:
             return None, None
 
     
-    def deleteb2(self,f):
-        subprocess.run([self.fileops.blaze,"s3","rm", "s3://"+self.bucket+"/"+f])
+    def deleteb2(self,fn, fid):
+        subprocess.run([self.fileops.blaze,"delete-file-version", fn, fid])
     
     
     def cpBucket(self):
         os.chdir(self.fileops.snapshots)
         #delete current S3 snapshot
-        currents3 = self.lsBucket()
+        currentb2_name, currentb2_id = self.lsBucket()
         quit()
-        if currents3 != None:
-            self.deleteb2(currents3)
+        if currentb2_name != None:
+            self.deleteb2(currentb2_name, currentb2_id)
         #get current
         l,f = self.fileops.get_folders()
         #zip current
