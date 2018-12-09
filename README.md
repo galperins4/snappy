@@ -9,8 +9,8 @@ bash install.sh
 #optional - configure AWS CLI for S3 upload/downloads
 python3 snappy.py --configureAWS
 
-#option - configure BackBlaze CLI for B2 upload/downloads
-python3 snappy.py --authorize
+#optional - configure BackBlaze CLI for B2 upload/downloads
+python3 snappy.py --authorizeB2
 
 ```
 
