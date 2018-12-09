@@ -74,7 +74,7 @@ class BackBlazeB2:
         
     def menu(self, option):
          if option=="--authorizeB2":
-              self.authrize()
+              self.authorize()
          elif option=="--uploadB2":
               self.cpBucket()
          elif option=="--downloadB2":
