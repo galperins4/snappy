@@ -9,6 +9,9 @@ bash install.sh
 #optional - configure AWS CLI for S3 upload/downloads
 python3 snappy.py --configureAWS
 
+#option - configure BackBlaze CLI for B2 upload/downloads
+python3 snappy.py --authorize
+
 ```
 
 ## Usage
@@ -16,7 +19,10 @@ Run the script with the appropriate command as follows: `python3 snappy.py --fla
 
 There is also a bash script `snappy.sh` that has also been included. You can copy the file to your home directory and add the following to crontab `/bin/bash $HOME/snappy.sh > /dev/null 2>&1` in addition to the frequency desired. This will run the append flag based on the frequency set in crontab. A prerequisite of this is that the --create flag has been used at least once to create the initial snapshot to append to. 
 
-If using AWS functionality to back-up to S3 make sure to fill out aws.json in the config folder with bucket name. Also make sure your IAM user you are using credentials for has access to S3 Buckets. 
+If using cloud functionality to back-up make sure to fill out config.json in the config folder with bucket names for the relevant service. 
+
+For AWS: Make sure your IAM user you are using credentials for has access to S3 Buckets. 
+For BackblazeB2: Make sure to set up an application key with write-access and bucket lifecycle is set to last version only
 
 ## To Do
 
@@ -24,9 +30,14 @@ If using AWS functionality to back-up to S3 make sure to fill out aws.json in th
 
 ## Changelog
 
+
+### 0.3
+- refactor a little more
+- Added BackBlaze class functionality to back-up/restore snapshots to/from a BackBlaze B2 bucket
+
 ### 0.2
 - refactor CLI functions into a seperate utility class
-- Added AWS class and functionality to back-up/restore snapshots to/from and AWS S3 bucket
+- Added AWS class and functionality to back-up/restore snapshots to/from an AWS S3 bucket
 
 ### 0.1
 - initial release
