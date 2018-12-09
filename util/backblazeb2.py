@@ -54,8 +54,7 @@ class BackBlazeB2:
         self.fileops.createZip(l)
         current = l+".zip"
         #upload current
-        quit()
-        subprocess.run([self.fileops.blaze,"s3","cp",current,"s3://"+self.bucket+"/"+current])
+        subprocess.run([self.fileops.blaze,"upload-file",self.bucket,current,current])
         #delete zip
         self.fileops.cleanZip(current)
     
