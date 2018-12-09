@@ -13,7 +13,7 @@ class BackBlazeB2:
 
     
     def import_config(self):
-        p = self.fileops.home+ '/snappy/config/blaze.json'
-        with open(p) as aws_file:
-           blaze = json.load(aws_file)
-        return blaze['bucket']
+        p = self.fileops.home+ '/snappy/config/bucket.json'
+        with open(p) as blaze_file:
+           blaze = json.load(blaze_file)
+        return blaze['blaze_bucket']
