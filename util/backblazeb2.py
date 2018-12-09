@@ -64,7 +64,6 @@ class BackBlazeB2:
         currentb2_name, currentb2_id = self.lsBucket()
         #download
         subprocess.run([self.fileops.blaze,"download-file-by-name",self.bucket,currentb2_name,currentb2_name])
-        quit()
         #unzip
         self.fileops.unzipZip(currentb2_name)
         #cleanup zip
@@ -73,7 +72,6 @@ class BackBlazeB2:
         self.cli.import_snap(currentb2_name[:-4])
 
         
-            
     def menu_options(self):
          print("--authorizeB2","configures authorizes BackBlaze B2 connection")
          print("--uploadB2", "uploads most recent snapshot to BackBlaze B2")
