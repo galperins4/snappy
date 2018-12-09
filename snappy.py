@@ -20,7 +20,7 @@ def main_menu():
           elif option =="--helpAWS":
                aws.menu_options()
           elif option =="--helpB2":
-               blaze.menu_otpions()
+               blaze.menu_options()
           elif option in cli_options:
                cli.menu(option)
           elif option in aws_options:
