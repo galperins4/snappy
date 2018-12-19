@@ -29,7 +29,7 @@ class FileOps:
 
     def get_database(self):
         #get dot path for load_env and load
-        dot = env+self.env_file
+        dot = self.home+self.env_file
         load_dotenv(dot)
         
         '''
