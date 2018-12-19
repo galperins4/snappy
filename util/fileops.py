@@ -38,7 +38,7 @@ class FileOps:
             network = json.load(network_file)
         return network['name']
         '''
-        return = os.getenv("ARK_DB_DATABASE")
+        return os.getenv("ARK_DB_DATABASE")
 
     def createZip(self,f):
         os.chdir(self.snapshots)
