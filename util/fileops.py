@@ -2,6 +2,7 @@ import json
 import os
 from pathlib import Path
 import subprocess
+from dotenv import load_dotenv
 
 
 class FileOps:
@@ -9,7 +10,7 @@ class FileOps:
         self.home = str(Path.home())
         self.cli_path = '/ark-core/packages/core-snapshots-cli'
         self.snap_path = '/.ark/snapshots/'
-        self.env_path = '/.ark/config'
+        self.env_file = '/.ark/.env'
         self.aws_path = '/.local/bin/aws'
         self.blaze_path = '/.local/bin/b2'
         
@@ -27,11 +28,17 @@ class FileOps:
 
 
     def get_database(self):
+        #get dot path for load_env and load
+        dot = env+self.env_file'
+        load_dotenv(dot)
+        
+        '''
         env = self.home+self.env_path
         with open(env + '/network.json') as network_file:
             network = json.load(network_file)
-
         return network['name']
+        '''
+        return = os.getenv("ARK_DB_DATABASE")
 
     def createZip(self,f):
         os.chdir(self.snapshots)
