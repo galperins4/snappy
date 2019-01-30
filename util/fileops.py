@@ -31,13 +31,6 @@ class FileOps:
         #get dot path for load_env and load
         dot = self.home+self.env_file
         load_dotenv(dot)
-        
-        '''
-        env = self.home+self.env_path
-        with open(env + '/network.json') as network_file:
-            network = json.load(network_file)
-        return network['name']
-        '''
         return os.getenv("ARK_DB_DATABASE").split('_')[1]
 
     def createZip(self,f):
