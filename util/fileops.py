@@ -9,14 +9,25 @@ class FileOps:
     def __init__(self):
         self.home = str(Path.home())
         self.cli_path = '/ark-core/packages/core-snapshots-cli'
-        self.snap_path = '/.ark/snapshots/'
-        self.env_file = '/.ark/.env'
+        configs = self.import_config()
+        net = self.data['network'].split('_')
+        coin, network = net[0], net[1]
+        
+        # get paths
         self.aws_path = '/.local/bin/aws'
         self.blaze_path = '/.local/bin/b2'
+        self.cli = self.home+self.cli_path
+        self.snapshots = self.home+'/.local/share/'+coin+'-core'+network+'/snapshots/'
+        self.aws = self.home+self.aws_path
+        self.blaze = self.home+self.blaze_path
         
+        
+        '''
+        self.snap_path = '/.ark/snapshots/'
+        self.env_file = '/.ark/.env'
         self.db = self.get_database()
         self.cli, self.snapshots, self.aws, self.blaze = self.get_paths()
-
+        ''''
         
     def import_config(self):
         p = self.home+ '/snappy/config/config.json'
@@ -24,7 +35,7 @@ class FileOps:
             config = json.load(config_file)
         return config
     
-    
+    '''
     def get_paths(self):
         c_path = self.home+self.cli_path
         s_path = self.home+self.snap_path+self.db
@@ -32,14 +43,14 @@ class FileOps:
         b_path = self.home+self.blaze_path
     
         return c_path, s_path, a_path, b_path
-
-
+    '''
+    '''
     def get_database(self):
         #get dot path for load_env and load
         dot = self.home+self.env_file
         load_dotenv(dot)
         return os.getenv("CORE_DB_DATABASE").split('_')[1]
-
+    '''
     def createZip(self,f):
         os.chdir(self.snapshots)
         subprocess.run(["zip","-r",f+".zip",f])
