@@ -27,7 +27,7 @@ class FileOps:
         self.env_file = '/.ark/.env'
         self.db = self.get_database()
         self.cli, self.snapshots, self.aws, self.blaze = self.get_paths()
-        ''''
+        '''
         
     def import_config(self):
         p = self.home+ '/snappy/config/config.json'
