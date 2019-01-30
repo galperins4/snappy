@@ -9,7 +9,8 @@ class BackBlazeB2:
     def __init__(self):
         self.fileops = FileOps()
         self.cli = CLI()
-        self.bucket=self.import_config()
+        #self.bucket=self.import_config()
+        self.bucket=self.fileops.import_config()['blaze_bucket']
 
     
     def import_config(self):
