@@ -31,7 +31,7 @@ class FileOps:
         #get dot path for load_env and load
         dot = self.home+self.env_file
         load_dotenv(dot)
-        return os.getenv("ARK_DB_DATABASE").split('_')[1]
+        return os.getenv("CORE_DB_DATABASE").split('_')[1]
 
     def createZip(self,f):
         os.chdir(self.snapshots)
