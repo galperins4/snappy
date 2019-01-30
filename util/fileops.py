@@ -51,7 +51,7 @@ class FileOps:
         try:
             folders = [item for item in os.listdir(self.snapshots) if os.path.isdir(os.path.join(self.snapshots, item))]
         except:
-            print("Oops!!! Looks like no snapshots have been taking. Try --create flag to get started.")
+            print("Oops!!! Looks like no snapshots have been taken. Try --create flag to get started.")
             quit()
     
         if 'rollbackTransactions' in folders:
