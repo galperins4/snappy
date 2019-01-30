@@ -12,6 +12,7 @@ class FileOps:
         configs = self.import_config()
         net = configs['network'].split('_')
         coin, network = net[0], net[1]
+        self.db = network
         
         # get paths
         self.aws_path = '/.local/bin/aws'
