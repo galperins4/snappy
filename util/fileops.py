@@ -10,7 +10,7 @@ class FileOps:
         self.home = str(Path.home())
         self.cli_path = '/ark-core/packages/core-snapshots-cli'
         configs = self.import_config()
-        net = self.data['network'].split('_')
+        net = configs['network'].split('_')
         coin, network = net[0], net[1]
         
         # get paths
