@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 class FileOps:
     def __init__(self):
         self.home = str(Path.home())
-        self.cli_path = '/ark-core/packages/core-snapshots-cli'
+        self.cli_path = '/core/packages/core-snapshots-cli'
         configs = self.import_config()
         net = configs['network'].split('_')
         coin, network = net[0], net[1]
