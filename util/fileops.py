@@ -18,6 +18,12 @@ class FileOps:
         self.cli, self.snapshots, self.aws, self.blaze = self.get_paths()
 
         
+    def import_network(self):
+        p = self.home+ '/snappy/config/bucket.json'
+        with open(p) as aws_file:
+            aws = json.load(aws_file)
+        return aws['aws_bucket']
+    
     def get_paths(self):
         c_path = self.home+self.cli_path
         s_path = self.home+self.snap_path+self.db
