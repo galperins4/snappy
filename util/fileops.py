@@ -17,11 +17,11 @@ class FileOps:
         # get paths
         self.aws_path = '/.local/bin/aws'
         self.blaze_path = '/.local/bin/b2'
-        self.cli = self.home+self.cli_path
         self.snapshots = self.home+'/.local/share/'+self.coin+'-core'+self.network+'/snapshots/'
         self.aws = self.home+self.aws_path
         self.blaze = self.home+self.blaze_path
         self.cli_path = self.core_check()
+        self.cli = self.home+self.cli_path
         
         
         '''
