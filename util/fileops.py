@@ -1,5 +1,6 @@
 import json
 import os
+import os.path
 from pathlib import Path
 import subprocess
 from dotenv import load_dotenv
@@ -8,19 +9,19 @@ from dotenv import load_dotenv
 class FileOps:
     def __init__(self):
         self.home = str(Path.home())
-        self.cli_path = '/core/packages/core-snapshots-cli'
         configs = self.import_config()
         net = configs['network'].split('_')
-        coin, network = net[0], net[1]
-        self.db = network
+        self.coin, self.network = net[0], net[1]
+        self.db = net[1]
         
         # get paths
         self.aws_path = '/.local/bin/aws'
         self.blaze_path = '/.local/bin/b2'
         self.cli = self.home+self.cli_path
-        self.snapshots = self.home+'/.local/share/'+coin+'-core'+network+'/snapshots/'
+        self.snapshots = self.home+'/.local/share/'+self.coin+'-core'+self.network+'/snapshots/'
         self.aws = self.home+self.aws_path
         self.blaze = self.home+self.blaze_path
+        self.cli_path = self.core_check()
         
         
         '''
@@ -30,6 +31,15 @@ class FileOps:
         self.cli, self.snapshots, self.aws, self.blaze = self.get_paths()
         '''
         
+    def core_check(self):
+        core_path = self.home + '/core'
+        if os.path.exists(core_path) is True:
+            p = '/core/packages/core-snapshots-cli'
+        else:
+            p = '/'+self.coin+'-core/packages/core-snapshots-cli'
+        return p
+
+
     def import_config(self):
         p = self.home+ '/snappy/config/config.json'
         with open(p) as config_file:
