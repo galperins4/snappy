@@ -22,14 +22,7 @@ class FileOps:
         self.blaze = self.home+self.blaze_path
         self.cli_path = self.core_check()
         self.cli = self.home+self.cli_path
-        
-        
-        '''
-        self.snap_path = '/.ark/snapshots/'
-        self.env_file = '/.ark/.env'
-        self.db = self.get_database()
-        self.cli, self.snapshots, self.aws, self.blaze = self.get_paths()
-        '''
+
         
     def core_check(self):
         core_path = self.home + '/core'
@@ -46,22 +39,7 @@ class FileOps:
             config = json.load(config_file)
         return config
     
-    '''
-    def get_paths(self):
-        c_path = self.home+self.cli_path
-        s_path = self.home+self.snap_path+self.db
-        a_path = self.home+self.aws_path
-        b_path = self.home+self.blaze_path
-    
-        return c_path, s_path, a_path, b_path
-    '''
-    '''
-    def get_database(self):
-        #get dot path for load_env and load
-        dot = self.home+self.env_file
-        load_dotenv(dot)
-        return os.getenv("CORE_DB_DATABASE").split('_')[1]
-    '''
+
     def createZip(self,f):
         os.chdir(self.snapshots)
         subprocess.run(["zip","-r",f+".zip",f])
