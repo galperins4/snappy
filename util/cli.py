@@ -38,7 +38,7 @@ class CLI:
     def import_snap(self,s):
         os.chdir(self.fileops.cli)
         self.stop_proc()
-        run(["yarn","restore:"+self.fileops.db,"-b",s,"--truncate"])
+        run(["yarn","restore:"+self.fileops.db,"--blocks",s,"--truncate"])
         self.start_proc()
 
 
@@ -55,7 +55,7 @@ class CLI:
     def rollback(self,b):
         os.chdir(self.fileops.cli)
         self.stop_proc()
-        run(["yarn","rollback:"+self.fileops.db,"-b",b])
+        run(["yarn","rollback:"+self.fileops.db,"--height",b])
         self.start_proc()
      
         #delete snaps with blocks beyond rollback value
