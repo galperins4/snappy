@@ -32,7 +32,7 @@ class CLI:
 
     def create_snap(self):
         os.chdir(self.fileops.cli)
-        run(["yarn","create:"+self.fileops.db])
+        run(["yarn","dump:"+self.fileops.db])
 
      
     def import_snap(self,s):
