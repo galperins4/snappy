@@ -8,11 +8,11 @@ class CLI:
         self.fileops = FileOps()
         
 
-    def start_proc(self):
+    def stop_proc(self):
         run(["pm2","stop","ark-core-relay", "ark-core-forger"])
      
      
-    def stop_proc(self):
+    def start_proc(self):
         run(["pm2","start","ark-core-relay","ark-core-forger"])
      
 
@@ -37,9 +37,9 @@ class CLI:
      
     def import_snap(self,s):
         os.chdir(self.fileops.cli)
-        self.start_proc()
-        run(["yarn","restore:"+self.fileops.db,"-b",s,"--truncate"])
         self.stop_proc()
+        run(["yarn","restore:"+self.fileops.db,"-b",s,"--truncate"])
+        self.start_proc()
 
 
     def verify_snap(self,v):
@@ -54,9 +54,9 @@ class CLI:
 
     def rollback(self,b):
         os.chdir(self.fileops.cli)
-        self.start_proc()
-        run(["yarn","rollback:"+self.fileops.db,"-b",b])
         self.stop_proc()
+        run(["yarn","rollback:"+self.fileops.db,"-b",b])
+        self.start_proc()
      
         #delete snaps with blocks beyond rollback value
         dirlist = self.fileops.list_folders()
