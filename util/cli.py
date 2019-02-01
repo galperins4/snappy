@@ -38,7 +38,7 @@ class CLI:
     def import_snap(self,s):
         os.chdir(self.fileops.cli)
         self.start_proc()
-        run(["yarn","import:"+self.fileops.db,"-b",s,"--truncate"])
+        run(["yarn","restore:"+self.fileops.db,"-b",s,"--truncate"])
         self.stop_proc()
 
 
@@ -49,7 +49,7 @@ class CLI:
 
     def append_snap(self,c):
         os.chdir(self.fileops.cli)
-        run(["yarn","create:"+self.fileops.db,"--blocks",c])
+        run(["yarn","dump:"+self.fileops.db,"--blocks",c])
 
 
     def rollback(self,b):
