@@ -30,6 +30,8 @@ For BackblazeB2: Make sure to set up an application key with write-access and bu
 
 ## Changelog
 
+### 0.4
+- updated to support new typescript core
 
 ### 0.3
 - refactor a little more

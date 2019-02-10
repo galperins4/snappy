@@ -1,37 +1,44 @@
 import json
 import os
+import os.path
 from pathlib import Path
 import subprocess
+from dotenv import load_dotenv
 
 
 class FileOps:
     def __init__(self):
         self.home = str(Path.home())
-        self.cli_path = '/ark-core/packages/core-snapshots-cli'
-        self.snap_path = '/.ark/snapshots/'
-        self.env_path = '/.ark/config'
+        configs = self.import_config()
+        net = configs['network'].split('_')
+        self.coin, self.network = net[0], net[1]
+        self.db = net[1]
+        
+        # get paths
         self.aws_path = '/.local/bin/aws'
         self.blaze_path = '/.local/bin/b2'
-        
-        self.db = self.get_database()
-        self.cli, self.snapshots, self.aws, self.blaze = self.get_paths()
+        self.snapshots = self.home+'/.local/share/'+self.coin+'-core/'+self.network+'/snapshots/'
+        self.aws = self.home+self.aws_path
+        self.blaze = self.home+self.blaze_path
+        self.cli_path = self.core_check()
+        self.cli = self.home+self.cli_path
 
         
-    def get_paths(self):
-        c_path = self.home+self.cli_path
-        s_path = self.home+self.snap_path+self.db
-        a_path = self.home+self.aws_path
-        b_path = self.home+self.blaze_path
+    def core_check(self):
+        core_path = self.home + '/core'
+        if os.path.exists(core_path) is True:
+            p = '/core/packages/core-snapshots-cli'
+        else:
+            p = '/'+self.coin+'-core/packages/core-snapshots-cli'
+        return p
+
+
+    def import_config(self):
+        p = self.home+ '/snappy/config/config.json'
+        with open(p) as config_file:
+            config = json.load(config_file)
+        return config
     
-        return c_path, s_path, a_path, b_path
-
-
-    def get_database(self):
-        env = self.home+self.env_path
-        with open(env + '/network.json') as network_file:
-            network = json.load(network_file)
-
-        return network['name']
 
     def createZip(self,f):
         os.chdir(self.snapshots)
@@ -51,7 +58,7 @@ class FileOps:
         try:
             folders = [item for item in os.listdir(self.snapshots) if os.path.isdir(os.path.join(self.snapshots, item))]
         except:
-            print("Oops!!! Looks like no snapshots have been taking. Try --create flag to get started.")
+            print("Oops!!! Looks like no snapshots have been taken. Try --create flag to get started.")
             quit()
     
         if 'rollbackTransactions' in folders:
