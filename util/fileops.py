@@ -20,10 +20,10 @@ class FileOps:
         self.snapshots = self.home+'/.local/share/'+self.coin+'-core/'+self.network+'/snapshots/'
         self.aws = self.home+self.aws_path
         self.blaze = self.home+self.blaze_path
-        self.cli_path = self.core_check()
-        self.cli = self.home+self.cli_path
+        #self.cli_path = self.core_check()
+        #self.cli = self.home+self.cli_path
 
-        
+    '''    
     def core_check(self):
         core_path = self.home + '/core'
         if os.path.exists(core_path) is True:
@@ -31,7 +31,8 @@ class FileOps:
         else:
             p = '/'+self.coin+'-core/packages/core-snapshots-cli'
         return p
-
+    '''
+    
     def get_configs(self):
         c = Config()
         self.net = c.network
