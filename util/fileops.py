@@ -9,7 +9,7 @@ import subprocess
 
 class FileOps:
     def __init__(self):
-        get_configs()
+        self.get_configs()
         self.home = str(Path.home())
         #configs = self.import_config()
         net = self.net.split('_')
