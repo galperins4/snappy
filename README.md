@@ -19,7 +19,7 @@ Run the script with the appropriate command as follows: `python3 snappy.py --fla
 
 There is also a bash script `snappy.sh` that has also been included. You can copy the file to your home directory and add the following to crontab `/bin/bash $HOME/snappy.sh > /dev/null 2>&1` in addition to the frequency desired. This will run the append flag based on the frequency set in crontab. A prerequisite of this is that the --create flag has been used at least once to create the initial snapshot to append to. 
 
-If using cloud functionality to back-up make sure to fill out config.json in the config folder with bucket names for the relevant service. 
+If using cloud functionality to back-up make sure to fill out config file in the config folder with bucket names for the relevant service. 
 
 For AWS: Make sure your IAM user you are using credentials for has access to S3 Buckets. 
 For BackblazeB2: Make sure to set up an application key with write-access and bucket lifecycle is set to last version only
@@ -29,6 +29,9 @@ For BackblazeB2: Make sure to set up an application key with write-access and bu
 - to be determined
 
 ## Changelog
+
+### 0.5
+- updated to support Ark Core 2.2 and new core-CLI snapshot change
 
 ### 0.4
 - updated to support new typescript core
