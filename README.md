@@ -22,6 +22,7 @@ There is also a bash script `snappy.sh` that has also been included. You can cop
 If using cloud functionality to back-up make sure to fill out config file in the config folder with bucket names for the relevant service. 
 
 For AWS: Make sure your IAM user you are using credentials for has access to S3 Buckets. 
+
 For BackblazeB2: Make sure to set up an application key with write-access and bucket lifecycle is set to last version only
 
 ## To Do
