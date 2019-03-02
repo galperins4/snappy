@@ -1,0 +1,8 @@
+# network
+NETWORK = "coin_network"
+
+# AWS settings
+AWS_BUCKET = "bucket_name"
+
+# Backblaze settings
+BB_BUCKET = "bucket_name"
