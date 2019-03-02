@@ -35,7 +35,6 @@ class CLI:
     def create_snap(self):
         #os.chdir(self.fileops.cli)
         #run(["yarn","dump:"+self.fileops.db])
-        print(self.fileops.coin)
         run([self.fileops.coin,"snapshot:dump"])
 
      
