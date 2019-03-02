@@ -4,7 +4,7 @@ import os.path
 from pathlib import Path
 import subprocess
 #from dotenv import load_dotenv
-from ..config.config import Config
+from .config.config import Config
 
 
 class FileOps:
