@@ -36,7 +36,7 @@ class CLI:
         #os.chdir(self.fileops.cli)
         #run(["yarn","dump:"+self.fileops.db])
         print(self.fileops.coin)
-        run(["self.fileops.coin","snapshot:dump"])
+        run([self.fileops.coin,"snapshot:dump"])
 
      
     def import_snap(self,s):
