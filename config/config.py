@@ -7,9 +7,9 @@ class Config():
         self.home = str(Path.home())
         env_path = self.home + '/snappy/config/config'
         load_dotenv(env_path)
-        load_network_config()
-        load_aws_config()
-        load_backblaze_config()
+        self.load_network_config()
+        self.load_aws_config()
+        self.load_backblaze_config()
     
     
     def load_network_config(self):
