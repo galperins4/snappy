@@ -33,8 +33,11 @@ class CLI:
 
 
     def create_snap(self):
-        os.chdir(self.fileops.cli)
-        run(["yarn","dump:"+self.fileops.db])
+        #os.chdir(self.fileops.cli)
+        #run(["yarn","dump:"+self.fileops.db])
+        print(self.fileops.coin)
+        quit()
+        #run 
 
      
     def import_snap(self,s):
