@@ -1,9 +1,8 @@
-import json
+#import json
 import os
 import os.path
 from pathlib import Path
 import subprocess
-#from dotenv import load_dotenv
 from config.config import Config
 
 
@@ -11,7 +10,6 @@ class FileOps:
     def __init__(self):
         self.get_configs()
         self.home = str(Path.home())
-        #configs = self.import_config()
         net = self.net.split('_')
         self.coin, self.network = net[0], net[1]
         self.db = net[1]
@@ -39,14 +37,7 @@ class FileOps:
         self.net = c.network
         self.aws_bucket = c.aws_bucket
         self.bb_bucket = c.bb_bucket
-    
-    '''
-    def import_config(self):
-        p = self.home+ '/snappy/config/config.json'
-        with open(p) as config_file:
-            config = json.load(config_file)
-        return config
-    '''
+
 
     def createZip(self,f):
         os.chdir(self.snapshots)
