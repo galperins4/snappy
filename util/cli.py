@@ -9,12 +9,12 @@ class CLI:
         
 
     def stop_proc(self):
-        run(["pm2","stop",self.fileops.coin+"-core-relay", self.fileops.coin+"-core-forger"])
+        run(["pm2","stop",self.fileops.coin+"-relay", self.fileops.coin+"-forger", self.fileops.coin+"-core"])
         #run(["pm2","stop","ark-core-relay", "ark-core-forger"])
      
      
     def start_proc(self):
-        run(["pm2","start",self.fileops.coin+"-core-relay", self.fileops.coin+"-core-forger"])
+        run(["pm2","start",self.fileops.coin+"-relay", self.fileops.coin+"-forger", self.fileops.coin+"-core"])
         #run(["pm2","start","ark-core-relay","ark-core-forger"])
      
 
