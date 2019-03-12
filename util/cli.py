@@ -9,13 +9,11 @@ class CLI:
         
 
     def stop_proc(self):
-        run(["pm2","stop",self.fileops.coin+"-core-relay", self.fileops.coin+"-core-forger"])
-        #run(["pm2","stop","ark-core-relay", "ark-core-forger"])
+        run(["pm2","stop",self.fileops.coin+"-relay", self.fileops.coin+"-forger", self.fileops.coin+"-core"])
      
      
     def start_proc(self):
-        run(["pm2","start",self.fileops.coin+"-core-relay", self.fileops.coin+"-core-forger"])
-        #run(["pm2","start","ark-core-relay","ark-core-forger"])
+        run(["pm2","start",self.fileops.coin+"-relay", self.fileops.coin+"-forger", self.fileops.coin+"-core"])
      
 
     def view_snap(self):
@@ -33,31 +31,27 @@ class CLI:
 
 
     def create_snap(self):
-        os.chdir(self.fileops.cli)
-        run(["yarn","dump:"+self.fileops.db])
+        run([self.fileops.coin,"snapshot:dump"])
 
      
     def import_snap(self,s):
-        os.chdir(self.fileops.cli)
         self.stop_proc()
-        run(["yarn","restore:"+self.fileops.db,"--blocks",s,"--truncate"])
+        run([self.fileops.coin,"snapshot:truncate"])
+        run([self.fileops.coin,"snapshot:restore", "--blocks",s])
         self.start_proc()
 
 
     def verify_snap(self,v):
-        os.chdir(self.fileops.cli)
-        run(["yarn","verify:"+self.fileops.db,"--blocks",v])
+        run([self.fileops.coin,"snapshot:verify","--blocks",v])
 
 
     def append_snap(self,c):
-        os.chdir(self.fileops.cli)
-        run(["yarn","dump:"+self.fileops.db,"--blocks",c])
+        run([self.fileops.coin,"snapshot:dump","--blocks",c])
 
 
     def rollback(self,b):
-        os.chdir(self.fileops.cli)
         self.stop_proc()
-        run(["yarn","rollback:"+self.fileops.db,"--height",b])
+        run([self.fileops.coin,"snapshot:rollback","--height",b])
         self.start_proc()
      
         #delete snaps with blocks beyond rollback value
@@ -104,6 +98,7 @@ class CLI:
                     print(counter+1,"-", i)
                snap_select = int(input("Select one of the options noted above "))
                if snap_select in tmp_menu.keys():
+                    self.verify_snap(tmp_menu[snap_select])
                     self.import_snap(tmp_menu[snap_select])
                else:
                     print("Something went wrong, please try again")

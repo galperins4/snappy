@@ -1,6 +1,5 @@
 from util.fileops import FileOps
 from util.cli import CLI
-import json
 import subprocess
 import os
 
@@ -8,15 +7,7 @@ class AWS:
     def __init__(self):
         self.fileops = FileOps()
         self.cli = CLI()
-        self.bucket=self.fileops.import_config()['aws_bucket']
-
-    '''
-    def import_config(self):
-        p = self.fileops.home+ '/snappy/config/bucket.json'
-        with open(p) as aws_file:
-            aws = json.load(aws_file)
-        return aws['aws_bucket']
-    '''
+        self.bucket = self.fileops.aws_bucket
 
 
     def configure(self):
