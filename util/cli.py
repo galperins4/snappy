@@ -6,7 +6,19 @@ from util.fileops import FileOps
 class CLI:
     def __init__(self):
         self.fileops = FileOps()
+        self.switch = self.control()
         
+
+    def control(self):
+        check = self.fileops.home+'/'+self.fileops.coin+'-core'
+        if os.path.isdir(check):
+            self.token = self.fileops.coin
+            self.net = self.fileops.network
+            self.path = check+'/packages/core/bin/run'
+            return True
+        else:
+            return False
+
 
     def stop_proc(self):
         run(["pm2","stop",self.fileops.coin+"-relay", self.fileops.coin+"-forger", self.fileops.coin+"-core"])
@@ -31,27 +43,49 @@ class CLI:
 
 
     def create_snap(self):
-        run([self.fileops.coin,"snapshot:dump"])
+        if self.switch:
+            run([self.path, "snapshot:dump", "--network", 
+                 self.net, "--token", self.token])
+        else:
+            run([self.fileops.coin,"snapshot:dump"])
 
      
     def import_snap(self,s):
         self.stop_proc()
-        run([self.fileops.coin,"snapshot:truncate"])
-        run([self.fileops.coin,"snapshot:restore", "--blocks",s])
+        if self.switch:
+            run([self.path, "snapshot:truncate", "--network", 
+                 self.net, "--token", self.token])
+            run([self.path, "snapshot:restire", "--blocks", s, "--network", 
+                 self.net, "--token", self.token])
+        else:
+            run([self.fileops.coin,"snapshot:truncate"])
+            run([self.fileops.coin,"snapshot:restore", "--blocks",s])
         self.start_proc()
 
 
     def verify_snap(self,v):
-        run([self.fileops.coin,"snapshot:verify","--blocks",v])
+        if self.switch:
+            run([self.path, "snapshot:verify", "--blocks", v, "--network", 
+                 self.net, "--token", self.token])
+        else:
+            run([self.fileops.coin,"snapshot:verify","--blocks",v])
 
 
     def append_snap(self,c):
-        run([self.fileops.coin,"snapshot:dump","--blocks",c])
+        if self.switch:
+            run([self.path, "snapshot:dump", "--blocks", c, "--network", 
+                 self.net, "--token", self.token])
+        else:
+            run([self.fileops.coin,"snapshot:dump","--blocks",c])
 
 
     def rollback(self,b):
         self.stop_proc()
-        run([self.fileops.coin,"snapshot:rollback","--height",b])
+        if self.switch:
+            run([self.path, "snapshot:rollback", "--height", b, "--network", 
+                 self.net, "--token", self.token])
+        else:
+            run([self.fileops.coin,"snapshot:rollback","--height",b])
         self.start_proc()
      
         #delete snaps with blocks beyond rollback value
