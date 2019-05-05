@@ -11,8 +11,12 @@ class CLI:
 
     def control(self):
         check = self.fileops.home+'/'+self.fileops.coin+'-core'
-        print(os.path.isdir(check))
-        quit()
+        if os.path.isdir(check):
+            return True
+            self.token = self.fileops.coin
+            self.net = self.fileops.net
+        else:
+            return False
 
 
     def stop_proc(self):
