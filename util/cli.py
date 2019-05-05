@@ -13,7 +13,7 @@ class CLI:
         check = self.fileops.home+self.fileops.coin+"-core"
         print(check)
         quit()
-        print os.path.isdir(check)
+        print(os.path.isdir(check))
 
 
     def stop_proc(self):
