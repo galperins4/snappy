@@ -14,7 +14,8 @@ class CLI:
         if os.path.isdir(check):
             return True
             self.token = self.fileops.coin
-            self.net = self.fileops.net
+            self.net = self.fileops.network
+            self.path = check+'/packages/core/bin/run'
         else:
             return False
 
@@ -42,7 +43,13 @@ class CLI:
 
 
     def create_snap(self):
-        run([self.fileops.coin,"snapshot:dump"])
+        if self.switch():
+            print(self.path)
+            quit()
+            run([self.path, "snapshot:dump", "--network", 
+                 self.net, "--token", self.token])
+        else:
+            run([self.fileops.coin,"snapshot:dump"])
 
      
     def import_snap(self,s):
