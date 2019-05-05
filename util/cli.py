@@ -43,7 +43,7 @@ class CLI:
 
 
     def create_snap(self):
-        if self.switch():
+        if self.switch:
             print(self.path)
             quit()
             run([self.path, "snapshot:dump", "--network", 
