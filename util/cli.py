@@ -10,7 +10,7 @@ class CLI:
         
 
     def control(self):
-        check = self.fileops.home+self.fileops.coin+"-core"
+        check = self.fileops.home+'/'+self.fileops.coin+'-core'
         print(check)
         quit()
         print(os.path.isdir(check))
