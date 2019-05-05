@@ -9,7 +9,7 @@ class CLI:
         self.switch = self.control()
         
 
-    def control():
+    def control(self):
         check = self.fileops.home+self.fileops.coin+"-core"
         print(check)
         quit()
