@@ -6,7 +6,12 @@ from util.fileops import FileOps
 class CLI:
     def __init__(self):
         self.fileops = FileOps()
+        self.switch = self.control()
         
+
+    def control():
+        pass
+
 
     def stop_proc(self):
         run(["pm2","stop",self.fileops.coin+"-relay", self.fileops.coin+"-forger", self.fileops.coin+"-core"])
