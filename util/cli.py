@@ -10,7 +10,10 @@ class CLI:
         
 
     def control():
-        pass
+        check = 
+        print(check)
+        quit()
+        print os.path.isdir(check)
 
 
     def stop_proc(self):
