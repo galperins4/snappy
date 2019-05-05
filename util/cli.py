@@ -12,10 +12,10 @@ class CLI:
     def control(self):
         check = self.fileops.home+'/'+self.fileops.coin+'-core'
         if os.path.isdir(check):
-            return True
             self.token = self.fileops.coin
             self.net = self.fileops.network
             self.path = check+'/packages/core/bin/run'
+            return True
         else:
             return False
 
