@@ -43,11 +43,13 @@ class CLI:
 
 
     def create_snap(self):
+        self.stop_proc()
         if self.switch:
             run([self.path, "snapshot:dump", "--network", 
                  self.net, "--token", self.token])
         else:
             run([self.fileops.coin,"snapshot:dump"])
+        self.start_proc()
 
      
     def import_snap(self,s):
