@@ -43,11 +43,13 @@ class CLI:
 
 
     def create_snap(self):
+        self.stop_proc()
         if self.switch:
             run([self.path, "snapshot:dump", "--network", 
                  self.net, "--token", self.token])
         else:
             run([self.fileops.coin,"snapshot:dump"])
+        self.start_proc()
 
      
     def import_snap(self,s):
@@ -64,20 +66,23 @@ class CLI:
 
 
     def verify_snap(self,v):
+        self.stop_proc()
         if self.switch:
             run([self.path, "snapshot:verify", "--blocks", v, "--network", 
                  self.net, "--token", self.token])
         else:
             run([self.fileops.coin,"snapshot:verify","--blocks",v])
+        self.start_proc()
 
 
     def append_snap(self,c):
+        self.stop_proc()
         if self.switch:
             run([self.path, "snapshot:dump", "--blocks", c, "--network", 
                  self.net, "--token", self.token])
         else:
             run([self.fileops.coin,"snapshot:dump","--blocks",c])
-
+        self.start_proc()
 
     def rollback(self,b):
         self.stop_proc()
