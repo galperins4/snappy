@@ -21,7 +21,9 @@ class CLI:
 
 
     def stop_proc(self):
-        run(["pm2","stop",self.fileops.coin+"-relay", self.fileops.coin+"-forger", self.fileops.coin+"-core"])
+        run(["pm2","stop",self.fileops.coin+"-relay"])
+        run(["pm2","stop",self.fileops.coin+"-forger"])
+        run(["pm2","stop",self.fileops.coin+"-core"])    
      
      
     def start_proc(self):
