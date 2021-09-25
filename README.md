@@ -1,4 +1,4 @@
-# Python Core2 Snapshot Manager
+# Python Core3 Snapshot Manager
 
 ## Installation
 
@@ -30,6 +30,9 @@ For BackblazeB2: Make sure to set up an application key with write-access and bu
 - to be determined
 
 ## Changelog
+
+### 0.6
+- updated for Ark Core 3.0
 
 ### 0.5
 - updated to support Ark Core 2.2 and new core-CLI snapshot change

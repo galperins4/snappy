@@ -41,6 +41,7 @@ class FileOps:
     def cleanZip(self,f):
         os.chdir(self.snapshots)
         subprocess.run(["rm",f])
+
         
     def list_folders(self):
         try:
