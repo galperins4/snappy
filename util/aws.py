@@ -45,10 +45,7 @@ class AWS:
     
     def restore(self):
         if os.path.isdir(self.fileops.snapshots) == False:
-            print("Does Not Exist")
-        
-        quit()
-        
+            subprocess.run(["mkdir", self.fileops.snapshots])
         os.chdir(self.fileops.snapshots)
         #get current and download
         currents3 = self.lsBucket()
