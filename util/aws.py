@@ -44,7 +44,9 @@ class AWS:
         self.fileops.cleanZip(current)
     
     def restore(self):
-        print(os.path.isdir(self.fileops.snapshots))
+        if os.path.isdir(self.fileops.snapshots) == False:
+            print("Does Not Exist")
+        
         quit()
         
         os.chdir(self.fileops.snapshots)
