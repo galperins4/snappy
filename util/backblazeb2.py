@@ -25,8 +25,7 @@ class BackBlazeB2:
             idDecode = get_id.stdout.decode("utf-8").split()
             fileName=outDecode[0]
             fileId=idDecode[17]
-            return fileName, fileId[1:-2]
-            
+            return fileName, fileId[1:-2]         
         except:
             return None, None
 
