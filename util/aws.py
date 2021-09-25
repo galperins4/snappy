@@ -44,9 +44,10 @@ class AWS:
         self.fileops.cleanZip(current)
     
     def restore(self):
-        if os.chdir(self.fileops.snapshots) == False:
-            print("Does not exist")
-            quit()
+        print(os.path.isdir(self.fileops.snapshots))
+        quit()
+        
+        os.chdir(self.fileops.snapshots)
         #get current and download
         currents3 = self.lsBucket()
         #download
