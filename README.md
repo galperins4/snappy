@@ -17,7 +17,7 @@ python3 snappy.py --authorizeB2
 ## Usage
 Run the script with the appropriate command as follows: `python3 snappy.py --flag`. For available options use the `--help` flag
 
-There is also a bash script `snappy.sh` that has also been included. You can copy the file to your home directory and add the following to crontab `/bin/bash $HOME/snappy.sh > /dev/null 2>&1` in addition to the frequency desired. This will run the append flag based on the frequency set in crontab. A prerequisite of this is that the --create flag has been used at least once to create the initial snapshot to append to. 
+There is also a bash script `snappy.sh` that has also been included. You can copy the file to your home directory and add the following to crontab `/bin/bash $HOME/snappy.sh > /dev/null 2>&1` in addition to the frequency desired. This will run at a frequency based on the frequency set in crontab. 
 
 If using cloud functionality to back-up make sure to fill out config file in the config folder with bucket names for the relevant service. 
 
