@@ -76,11 +76,12 @@ class CLI:
 
 
     def append_snap(self,c):
+        increment = int(c.split('-')[1])+1
         if self.switch:
             run([self.path, "snapshot:dump", "--blocks", c, "--network", 
                  self.net, "--token", self.token])
         else:
-            run([self.fileops.coin,"snapshot:dump","--blocks",c])
+            run([self.fileops.coin,"snapshot:dump","--start",str(increment)])
 
             
     def rollback(self,b):
