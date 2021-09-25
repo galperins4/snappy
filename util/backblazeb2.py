@@ -51,6 +51,7 @@ class BackBlazeB2:
         #delete zip
         self.fileops.cleanZip(current)
     
+    
     def restore(self):
         os.chdir(self.fileops.snapshots)
         #get current and download
