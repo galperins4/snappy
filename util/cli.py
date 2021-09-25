@@ -31,6 +31,7 @@ class CLI:
         run(["pm2","start",self.fileops.coin+"-forger"])
         run(["pm2","start",self.fileops.coin+"-core"])
 
+        
     def view_snap(self):
         dirlist = self.fileops.list_folders()
         print("Available Snapshots:")
@@ -81,6 +82,7 @@ class CLI:
         else:
             run([self.fileops.coin,"snapshot:dump","--blocks",c])
 
+            
     def rollback(self,b):
         self.stop_proc()
         if self.switch:
