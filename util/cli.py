@@ -110,7 +110,7 @@ class CLI:
     def menu_options(self):
         print("--view","shows available snapshots to use")
         print("--create","creates a new snapshot")
-        print("--append","appends to the most recent snapshot")
+        # print("--append","appends to the most recent snapshot")
         print("--import","imports a specific snapshot")
         print("--rollback","rollback database to specific block")
 
@@ -123,12 +123,12 @@ class CLI:
                l,f = self.fileops.get_folders()
                self.verify_snap(l)
                self.purge_check()
-        elif option=="--append":
-               l,f = self.fileops.get_folders()
-               self.append_snap(l)
-               l,f = self.fileops.get_folders()
-               self.verify_snap(l)
-               self.purge_check()
+        # elif option=="--append":
+          #      l,f = self.fileops.get_folders()
+          #      self.append_snap(l)
+          #      l,f = self.fileops.get_folders()
+          #      self.verify_snap(l)
+          #      self.purge_check()
         elif option=="--import":
                snap_opt = self.fileops.list_folders()
                tmp_menu = {}
