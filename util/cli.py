@@ -59,7 +59,7 @@ class CLI:
         if self.switch:
             run([self.path, "snapshot:truncate", "--network", 
                  self.net, "--token", self.token])
-            run([self.path, "snapshot:restire", "--blocks", s, "--network", 
+            run([self.path, "snapshot:restore", "--blocks", s, "--network", 
                  self.net, "--token", self.token])
         else:
             run([self.fileops.coin,"snapshot:truncate"])
